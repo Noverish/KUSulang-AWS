@@ -1,0 +1,25 @@
+{
+  "name": "kusulang",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "dependencies": {
+    "body-parser": "~1.16.0",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.0",
+    "ejs": "~2.5.5",
+    "express": "~4.14.1",
+    "gm": "^1.23.0",
+    "morgan": "~1.7.0",
+    "multer": "~1.1.0",
+    "serve-favicon": "~2.3.2",
+    "mysql": "^2.13.0"
+  },
+  "main": "app.js",
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
