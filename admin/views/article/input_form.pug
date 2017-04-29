@@ -1,0 +1,41 @@
+doctype html
+html
+  include ../head.pug
+  body
+    div(class='panel panel-default')
+        div(class='panel-heading')
+          h1 Article Write
+    form(class='form-horizontal' action='/admin/article'
+      method='post' enctype='multipart/form-data')
+
+      div(class='form-group')
+        label(for='name' class='col-sm-2 control-label') 작성자 선택
+        div(class='col-sm-6')
+          select(class='form-control' name='writer_id' id='inputWriterName')
+            each writer in writers
+              option(value=writer._id)= writer.name
+  
+      div(class='form-group')
+        label(for='title' class='col-sm-2 control-label') 제목
+        div(class='col-sm-6')
+          textarea(class='form-control' name='title' id='inputTitle' placeholder='Title')
+      
+      div(class='form-group')
+        label(for='main_img' class='col-sm-2 control-label') 메인 이미지
+        div(class='col-sm-6')
+          input(type='file' name='main_img' id='inputMainImg')
+            
+      div(class='form-group')
+        label(for='content_html' class='col-sm-2 control-label') 글 (*.htm 파일)
+        div(class='col-sm-6')
+          input(type='file' name='content_htm' id='inputHtm')
+            
+      div(class='form-group')
+        label(for='content_files' class='col-sm-2 control-label') 글 이미지, 파일
+        div(class='col-sm-6')
+          input(type='file' name='content_files' id='inputFiles' multiple)
+            
+      div(class='form-group')
+        div(class='col-sm-offset-2 col-sm-10')
+          button(type='submit' class='btn btn-default') 글쓰기
+        

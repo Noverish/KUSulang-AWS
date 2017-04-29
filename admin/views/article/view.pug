@@ -1,0 +1,35 @@
+doctype html
+html
+  include ../head.pug
+  body
+    - var img = results[0].img;
+    - var title = results[0].title;
+    - var name = results[0].name;
+    - var url = results[0].url;
+    div(class='col-xs-3 col-md-3')
+      div(class='row')
+          p= name
+      div(class='row')
+          a(href=img class='thumbnail')
+            img(src=img alt='') 
+      div(class='row')
+          p= title
+    div(class='col-xs-9 col-md-9')
+      a(href=url) 원문보기
+      div(id='content')
+      
+    script.
+      loadFragmentInToElement(url, 'content'); 
+      function loadFragmentInToElement(fragment_url, element_id) { 
+         var element = document.getElementById(element_id); 
+         element.innerHTML = '<p><em>Loading ...</em></p>'; 
+         var xmlhttp = new XMLHttpRequest(); 
+         xmlhttp.open("GET", fragment_url); 
+         xmlhttp.onreadystatechange = function() { 
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) { 
+               element.innerHTML = xmlhttp.responseText; 
+            } 
+         } 
+         xmlhttp.send(null); 
+      } 
+      

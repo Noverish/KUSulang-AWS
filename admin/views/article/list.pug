@@ -1,0 +1,41 @@
+doctype html
+html
+  include ../head.pug
+  body
+    //- each result in results
+    //-     - if (result.id%2 == 0)
+    //-     div(class='row')
+    //-       div(class='col-xs-6')
+    //-         h4= result.name
+    //-     div(class='row')
+    //-       div(class='col-xs-6')
+    //-         a(href=result.img class='thumbnail')
+    //-           img(src=result.img alt='') 
+    //-     div(class='row')
+    //-       div(class='col-xs-6')
+    //-         h5= result.title
+    
+    div(class='panel panel-default')
+        div(class='panel-heading')
+          h1 Article List
+          p= path
+          div(class='text-right') 
+            a(class='btn btn-default' href='./write' role='write') 등록하기
+        table(class='table')
+          tr
+            th ID
+            th TITLE
+            th WRITER_NAME
+            th MODIFY
+            th DELETE
+          each result in results
+            tr
+              td
+                a(href='./'+result._id+'/')= result._id
+              td
+                a(href='./'+result._id+'/')= result.title
+              td= result.name
+              td 
+                a(class='btn btn-default' href='#' role='modify') modify
+              td
+                a(class='btn btn-default' href='#' role='delete') delete
