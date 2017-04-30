@@ -2,34 +2,63 @@ doctype html
 html
   include ../head.pug
   body
+    -var sel_writer_id;
+    -if(sel_writers) sel_writer_id = sel_writers[0]._id;
+    -var title;
+    -if(sel_results) title = sel_results[0].title;
     div(class='panel panel-default')
         div(class='panel-heading')
-          h1 Article Write
-    form(class='form-horizontal' action='/admin/article'
-      method='post' enctype='multipart/form-data')
+          a(class='btn btn-default' href='../' role='list') 리스트
+          if sel_writer_id
+            h1= sel_results[0]._id+'번 글 수정'
+          else
+            h1 Article Write
+            
+    -var action = '/admin/article/';
+    -if(sel_writer_id) action = action+sel_results[0]._id+'?_method=PUT';
+    
+    form(class='form-horizontal' action=action method='post' enctype='multipart/form-data')
+      
+      if sel_writer_id
+        input(type='hidden' name='_method' value='PUT')
+        input(type='hidden' name='sel_result_id' value=sel_results[0]._id)
 
       div(class='form-group')
         label(for='name' class='col-sm-2 control-label') 작성자 선택
         div(class='col-sm-6')
           select(class='form-control' name='writer_id' id='inputWriterName')
             each writer in writers
-              option(value=writer._id)= writer.name
-  
+              if writer._id == sel_writer_id
+                option(value=writer._id selected='selected')= writer.name
+              else
+                option(value=writer._id)= writer.name
+              
       div(class='form-group')
         label(for='title' class='col-sm-2 control-label') 제목
         div(class='col-sm-6')
-          textarea(class='form-control' name='title' id='inputTitle' placeholder='Title')
+          if title
+            textarea(class='form-control' name='title' id='inputTitle' placeholder='Title')= title
+          else
+            textarea(class='form-control' name='title' id='inputTitle' placeholder='Title')
       
       div(class='form-group')
         label(for='main_img' class='col-sm-2 control-label') 메인 이미지
         div(class='col-sm-6')
-          input(type='file' name='main_img' id='inputMainImg')
+          if sel_writer_id
+            input(type='file' name='main_img' id='inputMainImg')
+            label(for='img_file')=sel_results[0].img
+          else
+            input(type='file' name='main_img' id='inputMainImg')
             
       div(class='form-group')
         label(for='content_html' class='col-sm-2 control-label') 글 (*.htm 파일)
         div(class='col-sm-6')
-          input(type='file' name='content_htm' id='inputHtm')
-            
+          if sel_writer_id
+            input(type='file' name='content_htm' id='inputHtm')
+            label(for='img_file')=sel_results[0].url
+          else
+            input(type='file' name='content_htm' id='inputHtm')
+          
       div(class='form-group')
         label(for='content_files' class='col-sm-2 control-label') 글 이미지, 파일
         div(class='col-sm-6')
@@ -37,5 +66,8 @@ html
             
       div(class='form-group')
         div(class='col-sm-offset-2 col-sm-10')
-          button(type='submit' class='btn btn-default') 글쓰기
+          if sel_writer_id
+            button(type='submit' class='btn btn-default') 수정하기
+          else
+            button(type='submit' class='btn btn-default') 글쓰기
         

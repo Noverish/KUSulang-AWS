@@ -11,7 +11,10 @@ module.exports = function(app, conn) {
         res.send('Exist same things');
         break;
       case '101':
-        res.send('No Files')
+        res.send('No Files');
+        break;
+      case '102':
+        res.send('No Exist Article');
         break;
       default:
         res.send('error');

@@ -2,19 +2,27 @@ doctype html
 html
   include ../head.pug
   body
+    - var _id = results[0]._id;
     - var img = results[0].img;
     - var title = results[0].title;
     - var name = results[0].name;
     - var url = results[0].url;
-    div(class='col-xs-3 col-md-3')
+    div(class='panel panel-default')
+      div(class='panel-heading')
+        a(class='btn btn-default' href='../' role='list') 리스트
+        h1= _id+'번 글'
+        div(class='text-right')
+          a(class='btn btn-default' href='./modify/' role='write') 수정
+          a(class='btn btn-default' href='./delete/' role='delete') 삭제
+    div(class='container col-xs-4 col-md-2')
       div(class='row')
-          p= name
+          h3= name
       div(class='row')
           a(href=img class='thumbnail')
-            img(src=img alt='') 
+            img(src=img alt='main_img') 
       div(class='row')
-          p= title
-    div(class='col-xs-9 col-md-9')
+          h3= title
+    div(class='container .col-xs-14 .col-sm-6 .col-md-10')
       a(href=url) 원문보기
       div(id='content')
       

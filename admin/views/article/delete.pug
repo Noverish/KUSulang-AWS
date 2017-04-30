@@ -1,0 +1,19 @@
+doctype html
+html
+  include ../head.pug
+  body
+    -var _id = results[0]._id;
+    -var _title = results[0].title;
+    div(class='panel panel-default')
+      div(class='panel-heading')
+        a(class='btn btn-default' href='../' role='list') 리스트
+        h1= _id+'번 글 삭제'
+    div(class='text-center')
+      h3= '정말로 '+_id+'번 -'+_title+'-을/를 삭제 하시겠습니까?'
+      div(class='btn-group btn-group-lg' role='group' aria-label='confirm')
+        form(method='POST' action='../' enctype='application/x-www-form-urlencoded')
+          input(type='hidden' name='_method' value='DELETE')
+          button(type='submit' class='btn btn-default') 네
+          a(type='button' href='../' class='btn btn-default') 아니오
+          
+      

@@ -17,10 +17,10 @@ html
     
     div(class='panel panel-default')
         div(class='panel-heading')
+          a(class='btn btn-default' href='../' role='list') Admin
           h1 Article List
-          p= path
           div(class='text-right') 
-            a(class='btn btn-default' href='./write' role='write') 등록하기
+            a(class='btn btn-default' href='./write/' role='write') 등록
         table(class='table')
           tr
             th ID
@@ -36,6 +36,6 @@ html
                 a(href='./'+result._id+'/')= result.title
               td= result.name
               td 
-                a(class='btn btn-default' href='#' role='modify') modify
+                a(class='btn btn-default' href='./'+result._id+'/modify/' role='modify') 수정
               td
-                a(class='btn btn-default' href='#' role='delete') delete
+                a(class='btn btn-default' href='./'+result._id+'/delete/' role='delete') 삭제
