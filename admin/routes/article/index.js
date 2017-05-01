@@ -210,18 +210,20 @@ module.exports = function(app, conn, router) {
                           content_htm_uploadname = sql_INSERT_defaultUrl+content_htm_uploadname;
                         }
 
-                        var sql =
-                        'UPDATE '+sql_FROM_Article+' '+
-                        'SET writer_id = ?, title = ?, img = ?, url = ? '+
-                        'WHERE _id = ?';
-                        conn.query(sql, [writer_id, title,
-                          main_img_uploadname, content_htm_uploadname, sel_res[0]._id],
-                          function(up_err, up_res, up_fie){
-                          if(up_err) console.log('update error : '+up_err);
-                          // console.log(up_res.insertId);
-                          console.log('complete update - title : '+title);
-                          res.redirect('./'+sel_res[0]._id+'/');
-                        });
+                        update_sql(writer_id, title,
+                          main_img_uploadname, content_htm_uploadname, sel_res[0]._id);
+                        // var sql =
+                        // 'UPDATE '+sql_FROM_Article+' '+
+                        // 'SET writer_id = ?, title = ?, img = ?, url = ? '+
+                        // 'WHERE _id = ?';
+                        // conn.query(sql, [writer_id, title,
+                        //   main_img_uploadname, content_htm_uploadname, sel_res[0]._id],
+                        //   function(up_err, up_res, up_fie){
+                        //   if(up_err) console.log('update error : '+up_err);
+                        //   // console.log(up_res.insertId);
+                        //   console.log('complete update - title : '+title);
+                        //   res.redirect('./'+sel_res[0]._id+'/');
+                        // });
 
                       }
                     });
@@ -241,18 +243,20 @@ module.exports = function(app, conn, router) {
                     content_htm_uploadname = sql_INSERT_defaultUrl+content_htm_uploadname;
                   }
 
-                  var sql =
-                  'UPDATE '+sql_FROM_Article+' '+
-                  'SET writer_id = ?, title = ?, img = ?, url = ? '+
-                  'WHERE _id = ?';
-                  conn.query(sql, [writer_id, title,
-                    main_img_uploadname, content_htm_uploadname, sel_res[0]._id],
-                    function(up_err, up_res, up_fie){
-                      if(up_err) console.log('update error : '+up_err);
-                      // console.log(up_res);
-                      console.log('complete update - title : '+title);
-                      res.redirect('./'+sel_res[0]._id+'/');
-                  });
+                  update_sql(writer_id, title,
+                    main_img_uploadname, content_htm_uploadname, sel_res[0]._id);
+                  // var sql =
+                  // 'UPDATE '+sql_FROM_Article+' '+
+                  // 'SET writer_id = ?, title = ?, img = ?, url = ? '+
+                  // 'WHERE _id = ?';
+                  // conn.query(sql, [writer_id, title,
+                  //   main_img_uploadname, content_htm_uploadname, sel_res[0]._id],
+                  //   function(up_err, up_res, up_fie){
+                  //     if(up_err) console.log('update error : '+up_err);
+                  //     // console.log(up_res);
+                  //     console.log('complete update - title : '+title);
+                  //     res.redirect('./'+sel_res[0]._id+'/');
+                  // });
 
                 }
 
@@ -266,6 +270,22 @@ module.exports = function(app, conn, router) {
       } catch (exception) {
         console.log('modify err : ',exception);
         res.redirect('./article/error/');
+      }
+
+      function update_sql(writer_id, title, img, url, _id) {
+
+        var sql =
+        'UPDATE '+sql_FROM_Article+' '+
+        'SET writer_id = ?, title = ?, img = ?, url = ? '+
+        'WHERE _id = ?';
+        conn.query(sql, [writer_id, title, img, url, _id],
+          function(up_err, up_res, up_fie){
+            if(up_err) console.log('update error : '+up_err);
+            // console.log(up_res);
+            console.log('complete update - title : '+title);
+            res.redirect('./'+_id+'/');
+        });
+
       }
       // res.send('put');
   });
