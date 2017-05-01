@@ -9,7 +9,7 @@ module.exports = function(app, conn) {
     var sql = 'SELECT * FROM ArticleWriter';
     conn.query(sql, function(err, writers, fields){
       if(err) console.log(err);
-      res.render('article/input_form.pug', {writers: writers});
+      res.render('articles/input_form.pug', {writers: writers});
     });
   });
 

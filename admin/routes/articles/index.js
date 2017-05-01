@@ -1,7 +1,7 @@
 /*
-Article
+Articles
 
-GET : '/' List Article
+GET : '/' List Articles
 GET : '/ID' Select ID Article View
 POST : '/' Write Article
 PUT : '/ID' Update Article
@@ -46,7 +46,7 @@ module.exports = function(app, conn, router) {
   // var modify = require('./modify')(app, conn);
   // router.use('/:id/modify', modify);
 
-  // Article List
+  // Articles List
   router.get('/', function (req, res, next) { // index page
     var sql =
     'SELECT '+sql_FROM_Article+'.*, ArticleWriter.name '+
@@ -54,7 +54,7 @@ module.exports = function(app, conn, router) {
     'INNER JOIN ArticleWriter ON ArticleWriter._id = '+sql_FROM_Article+'.writer_id';
     conn.query(sql, function(err, results, fields){
       if(err) console.log('list : '+err);
-      res.render('article/list.pug', {results: results, path: req.originalUrl});
+      res.render('articles/list.pug', {results: results, path: req.originalUrl});
     });
   });
 
@@ -78,13 +78,13 @@ module.exports = function(app, conn, router) {
           req.files.content_files === undefined ||
           req.files.content_htm === undefined ||
           req.files.main_img === undefined) {
-          res.redirect('./article/error/101');
+          res.redirect('./articles/error/101');
         } else {
           main_img = req.files.main_img[0];
           content_htm = req.files.content_htm[0];
           content_files = req.files.content_files;
 
-          have_same_things(title, main_img, content_htm, content_files, function(){
+          have_same_things(res, title, main_img, content_htm, content_files, function(){
 
             main_img_uploadname = file_upload(main_img, null, function(){
               content_htm_uploadname = file_upload(content_htm, null, function(){
@@ -103,7 +103,7 @@ module.exports = function(app, conn, router) {
                         if(insert_err) console.log('insert error : '+insert_err);
                         console.log(insert_res.insertId);
                         console.log('complete insert - title : '+title);
-                        res.redirect('./article/'+insert_res.insertId+'/');
+                        res.redirect('/articles/'+insert_res.insertId+'/');
                       });
                     }
                   });
@@ -116,7 +116,7 @@ module.exports = function(app, conn, router) {
         }
       } catch (exception) {
         console.log('write err : ',exception);
-        res.redirect('./article/error/');
+        res.redirect('./articles/error/');
       }
   });
 
@@ -140,7 +140,7 @@ module.exports = function(app, conn, router) {
               console.log(err);
             }
             console.log(results);
-            res.render('article/view.pug', {results: results});
+            res.render('articles/view.pug', {results: results});
           });
           break;
         }
@@ -174,7 +174,7 @@ module.exports = function(app, conn, router) {
 
       try {
         if(!title.trim()) {
-          res.redirect('./article/error/101');
+          res.redirect('./articles/error/101');
         } else {
 
           var sql = 'SELECT * FROM '+sql_FROM_Article+' WHERE _id = ?';
@@ -269,7 +269,7 @@ module.exports = function(app, conn, router) {
         }
       } catch (exception) {
         console.log('modify err : ',exception);
-        res.redirect('./article/error/');
+        res.redirect('./articles/error/');
       }
 
       function update_sql(writer_id, title, img, url, _id) {
@@ -302,7 +302,7 @@ module.exports = function(app, conn, router) {
         var sql = 'SELECT * FROM ArticleWriter';
         conn.query(sql, function(err, writers, fields){
           if(err) console.log(err);
-          res.render('article/input_form.pug', {sel_results: sel_results, sel_writers: sel_writers, writers: writers})
+          res.render('articles/input_form.pug', {sel_results: sel_results, sel_writers: sel_writers, writers: writers})
         });
       });
       // res.render('article/input_form.pug', {results: results});
@@ -329,24 +329,26 @@ module.exports = function(app, conn, router) {
     var sql = 'SELECT _id, title FROM '+sql_FROM_Article+' WHERE _id = ?';
     conn.query(sql, [id], function(sel_err, sel_res, sel_fileds){
       if(sel_err) console.log(sel_err);
-      res.render('article/delete.pug', {results: sel_res});
+      res.render('articles/delete.pug', {results: sel_res});
     });
     // res.render('article/delete.pug', {id: id, title: title});
   });
 
   //Function Have Same things?
-  function have_same_things(title, main_img, content_htm, content_files, callback) {
+  function have_same_things(res, title, main_img, content_htm, content_files, callback) {
     var sql =
     'SELECT count(_id) AS num FROM '+sql_FROM_Article+' '+
     'WHERE title LIKE ? OR img LIKE ? OR url LIKE ?';
     conn.query(sql,
       ['%'+title+'%', '%'+main_img.originalname+'%', '%'+content_htm.originalname+'%'],
       function(err, results, fields){
+
       var num = results[0].num;
       if(err || num != 0) {
 
          console.log('same things num : '+num);
          console.log('same things error : '+err);
+
          fs.unlink(file_path(main_img), function(err) {
            if(err) console.log('unlink : '+err);
            fs.unlink(file_path(content_htm), function(err) {
@@ -354,15 +356,16 @@ module.exports = function(app, conn, router) {
              for (var i = 0; i < content_files.length; i++) {
                fs.unlink(file_path(content_files[i]), function(err) {
                  if(err) console.log('unlink : '+err);
+                 res.redirect('./error/100');
                });
              }
            });
          });
-         res.redirect('./article/error/100');
 
       } else {
         callback();
       }
+
     });
   }
 

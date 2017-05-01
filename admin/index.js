@@ -9,8 +9,8 @@ module.exports = function(app) {
   var passport = require('./config/mysql/passport')();
   var conn = require('./config/mysql/db')();
 
-  var article = require('./routes/article/index')(admin_app, conn);
-  router.use('/article', article);
+  var article = require('./routes/articles/index')(admin_app, conn);
+  router.use('/articles', article);
 
   router.get('/', function (req, res, next) { // index page
     res.render('admin.pug');
