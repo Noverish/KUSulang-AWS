@@ -2,6 +2,8 @@ doctype html
 html
   include ../head.pug
   body
+    - var is_articles = 'active';
+    include ../nav.pug
     -var sel_writer_id;
     -if(sel_writers) sel_writer_id = sel_writers[0]._id;
     -var title;
@@ -44,25 +46,24 @@ html
       div(class='form-group')
         label(for='main_img' class='col-sm-2 control-label') 메인 이미지
         div(class='col-sm-6')
+          input(type='file' accept='image/*' name='main_img' id='inputMainImg' )
           if sel_writer_id
-            input(type='file' name='main_img' id='inputMainImg')
             label(for='img_file')=sel_results[0].img
           else
-            input(type='file' name='main_img' id='inputMainImg')
+            
             
       div(class='form-group')
         label(for='content_html' class='col-sm-2 control-label') 글 (*.htm 파일)
         div(class='col-sm-6')
+          input(type='file' accept='text/html' name='content_htm' id='inputContentHtm')
           if sel_writer_id
-            input(type='file' name='content_htm' id='inputHtm')
             label(for='img_file')=sel_results[0].url
           else
-            input(type='file' name='content_htm' id='inputHtm')
           
       div(class='form-group')
-        label(for='content_files' class='col-sm-2 control-label') 글 이미지, 파일
+        label(for='content_files' class='col-sm-2 control-label') 글 이미지, 파일 (htm이름.files에 저장)
         div(class='col-sm-6')
-          input(type='file' name='content_files' id='inputFiles' multiple)
+          input(type='file' name='content_files' id='inputContentFiles' multiple)
             
       div(class='form-group')
         div(class='col-sm-offset-2 col-sm-10')

@@ -2,6 +2,8 @@ doctype html
 html
   include ../head.pug
   body
+    - var is_articles = 'active';
+    include ../nav.pug
     - var _id = results[0]._id;
     - var img = results[0].img;
     - var title = results[0].title;
@@ -12,7 +14,7 @@ html
         a(class='btn btn-default' href='../' role='list') 리스트
         h1= _id+'번 글'
         div(class='text-right')
-          a(class='btn btn-default' href='./modify/' role='write') 수정
+          a(class='btn btn-default' href='./modify/' role='modify') 수정
           a(class='btn btn-default' href='./delete/' role='delete') 삭제
     div(class='container col-xs-4 col-md-2')
       div(class='row')

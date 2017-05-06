@@ -1,0 +1,15 @@
+doctype html
+html
+  include ../head.pug
+  body
+    - var is_deliveries = 'active';
+    include ../nav.pug
+    - var _id = id[0];
+    div(class='panel panel-default')
+      div(class='panel-heading')
+        a(class='btn btn-default' href='../' role='list') 리스트
+        h1= _id+'번 주문'
+        div(class='text-right')
+          a(class='btn btn-default' href='./modify/' role='modify') 배달수정
+          a(class='btn btn-default' href='./fail/' role='fail') 배달실패
+          a(class='btn btn-default' href='./complete/' role='complete') 배달완료

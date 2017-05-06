@@ -2,6 +2,8 @@ doctype html
 html
   include ../head.pug
   body
+    - var is_articles = 'active';
+    include ../nav.pug
     //- each result in results
     //-     - if (result.id%2 == 0)
     //-     div(class='row')
@@ -17,7 +19,6 @@ html
     
     div(class='panel panel-default')
         div(class='panel-heading')
-          a(class='btn btn-default' href='../' role='list') Admin
           h1 Articles List
           div(class='text-right') 
             a(class='btn btn-default' href='./write/' role='write') 등록

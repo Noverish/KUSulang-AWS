@@ -1,0 +1,58 @@
+doctype html
+html
+  include ../head.pug
+  body
+    - var is_deliveries = 'active';
+    include ../nav.pug
+    div(class='panel panel-default')
+        div(class='panel-heading')
+          h1 Deliveries List
+          div(class='text-right') 
+            a(class='btn btn-default' href='./write/' role='write') 등록
+        table(class='table')
+          tr
+            th ID
+            th 고객
+            th 배달품목
+            th 배달가게
+            th 휴대폰번호
+            th 위치
+            th 특이사항
+            th 결제방법
+            th 가격
+            th 라이더
+            th 주문상태
+            th 상태메세지
+            th 주문시간
+            th 주문시작시간
+            th 주문완료시간
+            th 시작
+            th 완료
+          tr(id='container' class='clickable-row' data-href='./1/')
+            td 1 
+            td 전근영
+            td 바니바니바니바니 당근당근
+            td 2호선 아현역 미니스톱
+            td 010-2831-2201
+            td 북아현동 1-395 동호주택 2층
+            td 집 앞에서 큰소리로 왔다고 외쳐주세요
+            td 계좌
+            td 100,000
+            td 가면
+            td 배달중
+            td 잔돈이 부족해서 한번 더 감
+            td 2017-05-02/17:05
+            td 2017-05-02/17:08
+            td 2017-05-02/18:03
+            td 
+              button 시작
+            td
+              button 완료
+    script.
+      $(document).ready(function(){
+        $(".clickable-row").click(function() {
+            window.location = $(this).data("href");
+        });
+      });
+        
+      

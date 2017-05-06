@@ -2,6 +2,8 @@ doctype html
 html
   include ../head.pug
   body
+    - var is_articles = 'active';
+    include ../nav.pug
     -var _id = results[0]._id;
     -var _title = results[0].title;
     div(class='panel panel-default')
