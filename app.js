@@ -5,16 +5,18 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var index = require('./routes/index');
-var admin = require('./admin/index')(app);
+var app = express();
 
 var users = require('./routes/users');
 var store = require('./routes/store');
+// var store_test = require('./routes/store_test');
 
-var app = express();
+var admin = require('./admin/index')(app);
+var api = require('./routes/api_index')(app);
 
 // view engine setup
 app.set('views', [__dirname + '/views', __dirname + '/admin/views']);
+// app.set('view engine', 'pug');
 app.set('view engine', 'ejs');
 // port setup
 app.set('port', process.env.PORT || 9000);
@@ -27,11 +29,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
 app.use('/admin', admin); // Administrator Page
+app.use('/', api); // API Page
 
 app.use('/users', users);
 app.use('/store', store);
+// app.use('/store_test', store_test);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

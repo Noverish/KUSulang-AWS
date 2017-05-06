@@ -1,0 +1,14 @@
+doctype html
+html
+  body
+    form(action='http://ec2-13-124-4-120.ap-nortaheast-2.compute.amazonaws.com/store/'+id method='post' enctype='multipart/form-data')
+      input(type='file' name='image' id='inputFile')
+      button(type='submit' class='btn btn-default')=id+'올리기'
+      
+    form(action='../store/'+id method='post' enctype='multipart/form-data')
+      input(type='file' name='image' id='inputFile')
+      button(type='submit' class='btn btn-default')=id+'올리기'
+      
+    form(action='./store_old/'+id method='post' enctype='multipart/form-data')
+      input(type='file' name='image' id='inputFile')
+      button(type='submit' class='btn btn-default')=id+'올리기'

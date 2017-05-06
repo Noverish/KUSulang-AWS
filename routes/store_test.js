@@ -17,33 +17,36 @@ router.post('/:store_id', upload.array('image', 2), function(req, res, next) {
         var store_id = req.params.store_id;
         var file_name = req.files[0].filename;
         var directory = req.files[0].destination;
+        var originalname = req.files[0].originalname;
+        var content_type = req.files[0].mimetype;
         var ext = req.files[0].originalname.split(".");
         ext = ext[ext.length - 1];
 
-        fs.renameSync(directory + file_name, directory + file_name + "." + ext);
-        file_name = file_name + "." + ext;
+        console.log(req.files[0]);
+        // fs.renameSync(directory + file_name, directory + file_name + "." + ext);
+        // file_name = file_name + "." + ext;
 
         var path = directory + file_name;
 
-        gm(path).resize(2000, 2000, "^")
+        gm(path).resize(2000, 2000)
                 .write(path, function (err) {
                     var param = {
                         'Bucket':'kusulang-storeimage',
-                        'Key': store_id + "/" + file_name,
+                        'Key': store_id + "/" + originalname,
                         'ACL':'public-read',
                         'Body':fs.createReadStream(path),
-                        'ContentType':'image/' + ext
+                        'ContentType': content_type
                     }
 
                     s3.upload(param, function(err, data) {
-                        gm(path).resize(2000, 2000)
+                        gm(path).resize(2000, 2000, "^")
                                 .write(path, function (err) {
                                     var param = {
                                         'Bucket':'kusulang-storeimage',
-                                        'Key': store_id + "/thumb/" + file_name,
+                                        'Key': store_id + "/thumb/" + originalname,
                                         'ACL':'public-read',
                                         'Body':fs.createReadStream(path),
-                                        'ContentType':'image/' + ext
+                                        'ContentType': content_type
                                     }
 
                                     s3.upload(param, function(err, data) {
