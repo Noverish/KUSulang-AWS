@@ -45,8 +45,11 @@ module.exports = function(app, conn) {
     'FROM '+sql_FROM_Article+' '+
     'INNER JOIN ArticleWriter ON ArticleWriter._id = '+sql_FROM_Article+'.writer_id';
     conn.query(sql, function(err, results, fields){
-      if(err) console.log('list : '+err);
-      res.render('articles/list.pug', {results: results, path: req.originalUrl});
+      if(err) {
+        console.log('list : '+err);
+      } else {
+        res.render('articles/list.pug', {results: results, path: req.originalUrl});
+      }
     });
   });
 
@@ -92,10 +95,13 @@ module.exports = function(app, conn) {
                       conn.query(sql, [writer_id, title,
                         sql_INSERT_defaultUrl+main_img_uploadname, sql_INSERT_defaultUrl+content_htm_uploadname],
                         function(insert_err, insert_res, insert_fie){
-                        if(insert_err) console.log('insert error : '+insert_err);
-                        console.log(insert_res.insertId);
-                        console.log('complete insert - title : '+title);
-                        res.redirect('./'+insert_res.insertId+'/');
+                        if(insert_err) {
+                          console.log('insert error : '+insert_err);
+                        } else {
+                          console.log(insert_res.insertId);
+                          console.log('complete insert - title : '+title);
+                          res.redirect('./'+insert_res.insertId+'/');
+                        }
                       });
                     }
                   });
@@ -118,23 +124,26 @@ module.exports = function(app, conn) {
     var sql = 'SELECT _id FROM '+sql_FROM_Article;
 
     conn.query(sql, function(err, ids, fields){
-      if(err) console.log(err);
-      for (var i = 0; i < ids.length; i++) {
-        if(ids[i]._id == id) {
-          var sql =
-          'SELECT '+sql_FROM_Article+'.*, ArticleWriter.name '+
-          'FROM '+sql_FROM_Article+' '+
-          'INNER JOIN ArticleWriter ON ArticleWriter._id = '+sql_FROM_Article+'.writer_id '+
-          'WHERE '+sql_FROM_Article+'._id = ?';
-          conn.query(sql, [id], function(err, results, fields){
-            if(err) {
-              res.send(err);
-              console.log(err);
-            }
-            console.log(results);
-            res.render('articles/view.pug', {results: results});
-          });
-          break;
+      if(err) {
+        console.log(err);
+      } else {
+        for (var i = 0; i < ids.length; i++) {
+          if(ids[i]._id == id) {
+            var sql =
+            'SELECT '+sql_FROM_Article+'.*, ArticleWriter.name '+
+            'FROM '+sql_FROM_Article+' '+
+            'INNER JOIN ArticleWriter ON ArticleWriter._id = '+sql_FROM_Article+'.writer_id '+
+            'WHERE '+sql_FROM_Article+'._id = ?';
+            conn.query(sql, [id], function(err, results, fields){
+              if(err) {
+                res.send(err);
+              } else {
+                console.log(results);
+                res.render('articles/view.pug', {results: results});
+              }
+            });
+            break;
+          }
         }
       }
     });
@@ -171,63 +180,67 @@ module.exports = function(app, conn) {
 
           var sql = 'SELECT * FROM '+sql_FROM_Article+' WHERE _id = ?';
           conn.query(sql, [sel_result_id], function(sel_err, sel_res, sel_fie){
-            console.log('sel_res', sel_res);
+            if(sel_err) {
+              console.log('Article Modify Err : '+sel_err);
+            } else {
+              console.log('sel_res', sel_res);
 
-            if(req.files.main_img !== undefined) main_img = req.files.main_img[0];
-            main_img_uploadname = file_upload(main_img, null, function(){
+              if(req.files.main_img !== undefined) main_img = req.files.main_img[0];
+              main_img_uploadname = file_upload(main_img, null, function(){
 
-              if(req.files.content_htm !== undefined) content_htm = req.files.content_htm[0];
-              content_htm_uploadname = file_upload(content_htm, null, function(){
+                if(req.files.content_htm !== undefined) content_htm = req.files.content_htm[0];
+                content_htm_uploadname = file_upload(content_htm, null, function(){
 
-                if(req.files.content_files !== undefined) {
+                  if(req.files.content_files !== undefined) {
 
-                  content_files = req.files.content_files;
-                  content_htm_name = content_htm.originalname.split('.htm')[0];
+                    content_files = req.files.content_files;
+                    content_htm_name = content_htm.originalname.split('.htm')[0];
 
-                  for (var i = 0; i < content_files.length; i++) {
-                    var complete_num = 0;
-                    file_upload(content_files[i], content_htm_name+'.files/', function(){
-                      complete_num++;
-                      if(complete_num == i) {
+                    for (var i = 0; i < content_files.length; i++) {
+                      var complete_num = 0;
+                      file_upload(content_files[i], content_htm_name+'.files/', function(){
+                        complete_num++;
+                        if(complete_num == i) {
 
-                        if(main_img_uploadname === undefined) {
-                          main_img_uploadname = sel_res[0].img;
-                        } else {
-                          main_img_uploadname = sql_INSERT_defaultUrl+main_img_uploadname;
+                          if(main_img_uploadname === undefined) {
+                            main_img_uploadname = sel_res[0].img;
+                          } else {
+                            main_img_uploadname = sql_INSERT_defaultUrl+main_img_uploadname;
+                          }
+
+                          if(content_htm_uploadname === undefined) {
+                            content_htm_uploadname = sel_res[0].url;
+                          } else {
+                            content_htm_uploadname = sql_INSERT_defaultUrl+content_htm_uploadname;
+                          }
+
+                          update_sql(writer_id, title, main_img_uploadname, content_htm_uploadname, sel_res[0]._id);
+
                         }
+                      });
+                    }
 
-                        if(content_htm_uploadname === undefined) {
-                          content_htm_uploadname = sel_res[0].url;
-                        } else {
-                          content_htm_uploadname = sql_INSERT_defaultUrl+content_htm_uploadname;
-                        }
-
-                        update_sql(writer_id, title, main_img_uploadname, content_htm_uploadname, sel_res[0]._id);
-
-                      }
-                    });
-                  }
-
-                } else {
-
-                  if(main_img_uploadname === undefined) {
-                    main_img_uploadname = sel_res[0].img;
                   } else {
-                    main_img_uploadname = sql_INSERT_defaultUrl+main_img_uploadname;
+
+                    if(main_img_uploadname === undefined) {
+                      main_img_uploadname = sel_res[0].img;
+                    } else {
+                      main_img_uploadname = sql_INSERT_defaultUrl+main_img_uploadname;
+                    }
+
+                    if(content_htm_uploadname === undefined) {
+                      content_htm_uploadname = sel_res[0].url;
+                    } else {
+                      content_htm_uploadname = sql_INSERT_defaultUrl+content_htm_uploadname;
+                    }
+
+                    update_sql(writer_id, title, main_img_uploadname, content_htm_uploadname, sel_res[0]._id);
                   }
 
-                  if(content_htm_uploadname === undefined) {
-                    content_htm_uploadname = sel_res[0].url;
-                  } else {
-                    content_htm_uploadname = sql_INSERT_defaultUrl+content_htm_uploadname;
-                  }
-
-                  update_sql(writer_id, title, main_img_uploadname, content_htm_uploadname, sel_res[0]._id);
-                }
+                });
 
               });
-
-            });
+            }
 
           });
 
