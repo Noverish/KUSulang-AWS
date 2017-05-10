@@ -1,0 +1,9 @@
+{
+  "apps" : [{
+    "name"        : "kusulang-api",
+    "script"      : "./app.js",
+    "watch"       : true,
+    "ignore_watch": ["uploads", "/uploads", "nohup", "*.out", "*.log"],
+    "exec_mode"   : "cluster"
+  }]
+}
