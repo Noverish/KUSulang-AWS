@@ -1,8 +1,13 @@
+var express = require('express');
+var app = express();
 var multer = require('multer');
 var upload = multer({ dest: 'uploads/' });
 
+var bodyParser = require('body-parser');
+
 exports.router = function(_router, api_controllers, version) {
   var router = _router;
+  router.use(bodyParser.urlencoded({ extended: false }));
   var controllers = api_controllers.version_controllers('v'+version);
 
   router.get('/', function(req, res, next) {
@@ -24,9 +29,9 @@ exports.router = function(_router, api_controllers, version) {
         .get(controllers.delivery_list)
         .post(controllers.delivery_request);
 
-  router.get('/deliveries/deliverable-stores', controllers.delivery_deliverable_store);
-
   router.put('/deliveries/:id', controllers.delivery_modify);
+
+  router.get('/deliveries/deliverable-stores', controllers.delivery_deliverable_store);
 
   router.get('/writers', controllers.writer_list);
   router.get('/writers/:id', controllers.writer_info);
@@ -35,7 +40,6 @@ exports.router = function(_router, api_controllers, version) {
   router.route('/writers/:writer_id/articles/:article_id/comments')
         .post(controllers.article_comment_write)
         .get(controllers.article_comment_list);
-
 
   router.route('/writers/:writer_id/articles/:article_id/comments/:comment_id')
         .get(controllers.article_comment_info)
