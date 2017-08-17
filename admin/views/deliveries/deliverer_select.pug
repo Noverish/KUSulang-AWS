@@ -1,0 +1,76 @@
+doctype html
+html
+  include ../head.pug
+  body
+    - var is_deliveries = 'active';
+    include ../nav.pug
+    div(class='container-fluid col-xs-12 text-center')
+      h4='KU-'+id+' 주문 라이더 선택'
+    div(class='container-fluid col-xs-12')
+      form(id='delivererForm' class='form' action='../' method='post')
+        input(type='hidden' name='delivery_status' id='deliveryStatus' value='0')
+        input(type='hidden' name='delivery_id' id='deliveryUserId' value=id)
+        input(type='hidden' name='deliverer_id' id='delivererId')
+        
+        each val in results
+          //- div(class='panel panel-default')
+          //-   div(class='panel-delivery')
+          //-     div(class='container deliverer-info')
+          //-       p(class='col-xs-1 col-md-1')=val._id
+          //-       img(class='col-xs-3 col-md-1' src=val.img alt='profile_image' class='img-circle')
+          //-       div(class='deliverer-info col-xs-8 col-md-10')
+          //-         p(class='col-xs-3 col-md-2') 
+          //-         p(class='col-xs-7 col-md-8')=val.name
+          //-         div(class='col-xs-2 col-md-2 radio')
+          //-           label
+          //-             input(type='radio' name='deliverer_id' id='delivererId'+val._id value=val._id)
+          div(class='col-xs-12 col-md-3')
+            a(type='button' onclick='selectDeliverer('+val._id+')' id='btnDeliverer' class='btn btn-deliverer text-center' data-toggle='modal' data-target='#delivererModal')
+              p=val._id
+              img(height='100' src=val.img alt='profile_image' class='img-thumbnail')
+              p=val.name
+        
+        div(id='delivererModal' class='modal fade' role='dialog')
+          div(class='modal-dialog')
+            div(class='modal-content')
+              div(class='modal-header')
+                button(type='button' class='close' data-dismiss='modal')
+                h3(class='modal-title') 배달자 선정
+              div(class='modal-body')
+                p(id='modalContent')
+              div(class='modal-footer')
+                button(type='button' class='btn btn-default' data-dismiss='modal') 취소
+                button(type='submit' class='btn btn-default') 선정
+                                    
+      //- nav(class='navbar navbar-default navbar-fixed-bottom')  
+      //-   div(class='nav navbar-nav navbar-right')
+      //-     div(class='container-fluid container-delivery-button')
+      //-       div(class='btn-group col-xs-12' role='group')
+      //-         button(type='button' id='btnComplete' class='btn btn-default btn-delivery' data-toggle='modal' data-target='#delivererModal') 선정완료
+                  
+    button(type='button' onclick='goBack()' id='closeBtn' class='btn btn-default btn-lg')
+      span(class='glyphicon glyphicon-remove')              
+    
+    script.
+      $(document).ready(function(){
+        $('.btn-deliverer').on('click', function() {
+          var deliverer_id = $('#delivererId').val();
+          if(deliverer_id){
+            $('#modalContent').text(deliverer_id+'번 배달자를 선택하시겠습니까?');
+          } else {
+            $('#modalContent').text('배달자를 선택해주세요.');
+          }
+        });
+      });
+      
+      function selectDeliverer(_id) {
+        $('#delivererId').val(_id);
+      }
+      
+      function goBack() {
+        window.history.back();
+      }
+              
+      
+
+                    

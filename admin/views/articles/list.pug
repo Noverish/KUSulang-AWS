@@ -3,24 +3,12 @@ html
   include ../head.pug
   body
     - var is_articles = 'active';
-    include ../nav.pug
-    //- each result in results
-    //-     - if (result.id%2 == 0)
-    //-     div(class='row')
-    //-       div(class='col-xs-6')
-    //-         h4= result.name
-    //-     div(class='row')
-    //-       div(class='col-xs-6')
-    //-         a(href=result.img class='thumbnail')
-    //-           img(src=result.img alt='') 
-    //-     div(class='row')
-    //-       div(class='col-xs-6')
-    //-         h5= result.title
-    
+    include ../nav.pug  
     div(class='panel panel-default')
         div(class='panel-heading')
           h1 Articles List
           div(class='text-right') 
+            button(class='btn btn-default' onclick='window.scrollTo(0,document.body.scrollHeight)') 맨아래
             a(class='btn btn-default' href='./write/' role='write') 등록
         table(class='table')
           tr

@@ -1,0 +1,107 @@
+doctype html
+html
+  include ../head.pug
+  body
+    - var is_deliveries = 'active';
+    include ../nav.pug
+    include ./list_tab.pug
+    
+    div(class='container-delivery')
+      if results.length == 0
+        h4(class='text-center') 주문이 없어요!
+      each val in results
+        if val.delivery_status != 4 && val.delivery_status != 5 && val.delivery_status != 6 || list_tab == 'all'
+          div(class='panel panel-default')
+            div(class='panel-delivery' id='deliveryPanel'+val.num data-href='./'+val._id+'/')
+              div(class='container')
+                label(class='col-xs-2 col-md-1') No. 
+                p(class='col-xs-3 col-md-2')=val.num
+                label(class='col-xs-2 col-md-1')
+                a(href='tel://'+val.contact class='col-xs-5 col-md-8')
+              div(class='container')
+                label(class='col-xs-2 col-md-1') 주문ID 
+                p(class='col-xs-3 col-md-2')='KU-'+val._id
+                label(class='col-xs-2 col-md-1') 전화 
+                a(href='tel://'+val.contact class='col-xs-5 col-md-8')=val.contact
+              div(class='container')
+                label(class='col-xs-2 col-md-1') 이름 
+                p(class='col-xs-3 col-md-2')=val.orderer_name
+                label(class='col-xs-2 col-md-1') 주소 
+                a(href='http://map.naver.com/?query='+val.address1+' '+val.address2+' '+val.address3 class='col-xs-5 col-md-8')=val.address1+' '+val.address2+' '+val.address3
+              div(class='container')
+                table(class='table table-responsive')
+                  tr
+                    th #
+                    th 장소
+                    th 메뉴
+                    th 특이사항
+                  - var num = 1;
+                  each items in val.items
+                    tr
+                      td=num++
+                      td=items.place_name
+                      td=items.menu
+                      td=items.note
+              div(class='container')
+                label(class='col-xs-12 col-md-12') 주문특이사항 
+              div(class='container')
+                each items in val.items
+                  p(class='col-xs-12 col-md-12')=val.note
+              div(class='container')
+                label(class='col-xs-4 col-md-2') 주문접수시간
+                p(class='col-xs-8 col-md-4')=val.request_time+' '
+                label(class='col-xs-4 col-md-2') 라이더선정시간
+                p(class='col-xs-8 col-md-4')=val.chosen_time+' '
+              div(class='container')
+                div(class='progress')
+                  if val.delivery_status == 0
+                    div(class='progress-bar' role='progressbar' aria-valuemin='0' aria-valuemax='100' style='width: 25%') 주문완료
+                  if val.delivery_status == 1
+                    div(class='progress-bar' role='progressbar' aria-valuemin='0' aria-valuemax='100' style='width: 30%') 라이더선정
+                  if val.delivery_status == 2
+                    div(class='progress-bar' role='progressbar' aria-valuemin='0' aria-valuemax='100' style='width: 50%') 라이더출발
+                  if val.delivery_status == 3
+                    div(class='progress-bar' role='progressbar' aria-valuemin='0' aria-valuemax='100' style='width: 75%') 음식배달중
+                  if val.delivery_status == 4
+                    div(class='progress-bar progress-bar-success' role='progressbar' aria-valuemin='0' aria-valuemax='100' style='width: 100%') 배달완료
+                  if val.delivery_status == 5
+                    div(class='progress-bar progress-bar-warning' role='progressbar' aria-valuemin='0' aria-valuemax='100' style='width: 100%') 배달취소
+                  if val.delivery_status == 6
+                    div(class='progress-bar progress-bar-danger' role='progressbar' aria-valuemin='0' aria-valuemax='100' style='width: 100%') 주문취소
+            
+            form(class='form' action='./'+val._id method='post')
+              div(class='container container-delivery-button')
+                  input(type='hidden' name='delivery_status' id='deliveryStatus' value=val.delivery_status)
+                  input(type='hidden' name='user_id' id='deliveryUserId' value=val.user_id)
+                  if val.delivery_status == 0
+                    div(class='btn-group col-xs-12' role='group')
+                      button(type='submit' class='btn btn-default btn-delivery' formaction='./'+val._id+'/deliverer/') 라이더선정
+                  if val.delivery_status == 2
+                    div(class='btn-group col-xs-12' role='group')
+                      a(type='button' class='btn btn-default btn-delivery' data-toggle='modal' data-target='#startModal'+val._id) 배달시작  
+                  if val.delivery_status == 3
+                    div(class='btn-group col-xs-12' role='group')
+                      a(type='button' class='btn btn-default btn-delivery' data-toggle='modal' data-target='#completeModal'+val._id) 배달완료          
+              include ./modal_start.pug
+              include ./modal_complete.pug
+        
+        else if val && val.num == results.length
+          h4 미완료된 주문이 없어요!
+          
+    input(type='hidden' id='isRefresh' value='0')
+              
+    script.
+      var results_length = '#{results.length}';
+      $(document).ready(function(){
+        
+        var $isRefresh = $('#isRefresh');
+        $isRefresh.val() == '1' ? location.reload(true) : $isRefresh.val('1');
+        
+        for(var i = 0; i <= results_length; i++) {
+          $('#deliveryPanel'+i).click(function() {
+              window.location = $(this).data("href");
+          });
+        }
+      });
+        
+      

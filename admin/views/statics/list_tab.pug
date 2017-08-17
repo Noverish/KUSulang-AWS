@@ -1,0 +1,92 @@
+ul(class='nav nav-pills')
+  if list_tab == 'home'
+    li(class='active')
+      a(href='/statics/') Main
+    li
+      a(href='/statics/articles/') Articles
+    li
+      a(href='/statics/banners') Banner
+    li
+      a(href='/statics/users') User
+    li
+      a(href='/statics/reviews/') Review
+    li
+      a(href='/statics/login/') Login
+  else if list_tab == 'article'
+    li
+      a(href='/statics/') Main
+    li(class='active')
+      a(href='/statics/articles/') Articles
+    li
+      a(href='/statics/banners') Banner
+    li
+      a(href='/statics/users') User
+    li
+      a(href='/statics/reviews/') Review
+    li
+      a(href='/statics/login/') Login
+  else if list_tab == 'banner'
+    li
+      a(href='/statics/') Main
+    li
+      a(href='/statics/articles/') Articles
+    li(class='active')
+      a(href='/statics/banners') Banner
+    li
+      a(href='/statics/users') User
+    li
+      a(href='/statics/reviews/') Review
+    li
+      a(href='/statics/login/') Login
+  else if list_tab == 'user'
+    li
+      a(href='/statics/') Main
+    li
+      a(href='/statics/articles/') Articles
+    li
+      a(href='/statics/banners') Banner
+    li(class='active')
+      a(href='/statics/users') User
+    li
+      a(href='/statics/reviews/') Review
+    li
+      a(href='/statics/login/') Login
+  else if list_tab == 'review'
+    li
+      a(href='/statics/') Main
+    li
+      a(href='/statics/articles/') Articles
+    li
+      a(href='/statics/banners') Banner
+    li
+      a(href='/statics/users') User
+    li(class='active')
+      a(href='/statics/reviews/') Review
+    li
+      a(href='/statics/login/') Login
+  else if list_tab == 'login'
+    li
+      a(href='/statics/') Main
+    li
+      a(href='/statics/articles/') Articles
+    li
+      a(href='/statics/banners') Banner
+    li
+      a(href='/statics/users') User
+    li
+      a(href='/statics/reviews/') Review
+    li(class='active')
+      a(href='/statics/login/') Login
+  else
+    li
+      a(href='/statics/') Main
+    li
+      a(href='/statics/articles/') Articles
+    li
+      a(href='/statics/banners') Banner
+    li
+      a(href='/statics/users') User
+    li
+      a(href='/statics/reviews/') Review
+    li
+      a(href='/statics/login/') Login

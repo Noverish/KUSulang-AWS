@@ -18,19 +18,20 @@ module.exports = function(app, conn) {
   var AWS = require('aws-sdk');
   var fs = require('fs');
   var gm = require('gm');
-  var s3 = new AWS.S3();
+
   AWS.config.update({
     accessKeyId: "AKIAI5I5WQRQ7RG4JH4A",
     secretAccessKey: "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",
     region: "ap-northeast-2"
   });
+  var s3 = new AWS.S3();
 
-  var sql_FROM_Article = 'ArticleTest';
-  var sql_INSERT_defaultUrl = 'https://s3.ap-northeast-2.amazonaws.com/kusulang-test/';
-  var s3_bucket = 'kusulang-test';
-  // var sql_FROM_Article = 'Article';
-  // var sql_INSERT_defaultUrl = 'https://s3.ap-northeast-2.amazonaws.com/kusulang-article/';
-  // var s3_bucket = 'kusulang-article';
+  // var sql_FROM_Article = 'ArticleTest';
+  // var sql_INSERT_defaultUrl = 'https://s3.ap-northeast-2.amazonaws.com/kusulang-test/';
+  // var s3_bucket = 'kusulang-test';
+  var sql_FROM_Article = 'Article';
+  var sql_INSERT_defaultUrl = 'https://s3.ap-northeast-2.amazonaws.com/kusulang-article/';
+  var s3_bucket = 'kusulang-article';
 
   var write = require('./articles/write')(app, conn);
   var error = require('./articles/error')(app, conn);

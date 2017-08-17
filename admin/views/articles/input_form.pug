@@ -16,7 +16,7 @@ html
           else
             h1 Article Write
             
-    -var action = '/admin/articles/';
+    -var action = '/articles/';
     -if(sel_writer_id) action = action+sel_results[0]._id+'?_method=PUT';
     
     form(class='form-horizontal' action=action method='post' enctype='multipart/form-data')

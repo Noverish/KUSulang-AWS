@@ -1,0 +1,14 @@
+{
+  "delivery": {
+    "admin_token": "101",
+    "available": 0,
+    "startTime": {
+      "hour": 1,
+      "min": 0
+    },
+    "endTime": {
+      "hour": 1,
+      "min": 0
+    }
+  }
+}

@@ -3,7 +3,7 @@
     "name"        : "kusulang-api",
     "script"      : "./app.js",
     "watch"       : true,
-    "ignore_watch": ["uploads", "/uploads", "nohup", "*.out", "*.log"],
+    "ignore_watch": ["config", "uploads", "/uploads", "nohup", "*.out", "*.log", "admin", "/admin", ".git"],
     "exec_mode"   : "cluster"
   }]
 }

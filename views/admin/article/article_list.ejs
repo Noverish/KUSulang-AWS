@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <table border="1">
+            <th>names</th>
+            <% for(i in folders) { %>
+            <tr><td><a href="/<%= folders[i] %>"><%= folders[i] %></a></td></tr>
+            <% } %>
+        </table>
+    </body>
+</html>

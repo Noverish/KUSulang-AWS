@@ -3,18 +3,34 @@ html
   include ./head.pug
   body
     - var is_home = 'active';
-    include ./index_nav.pug
+    include ./nav.pug
     if status == 'admin'
-      p Welcome to Socrates!
+      div(class='container-fluid')
+        h3 Welcome to Socrates :)
+      
+      script.
+        $(document).ready(function(){
+          window.location.replace('deliveries/');
+        });
+      
     else
-      if status == 'failed'
-        p Login Fail
-      form(class='text-center form-horizontal' action='./' method='post')
-        div(class='form-group')
-          label(for='loginId') ID
-          input(type='text' name='id' class='form-control' id='loginId' placeholder='ID')
-        div(class='form-group')
-          label(for='loginPassword') PASSWORD
-          input(type='password' name='password' class='form-control' id='loginPassword' placeholder='Password')
-        button(type='submit' class='btn btn-default') LOGIN
+      div(class='container-fluid')
+        h4 LOGIN
+      div(class='panel panel-default')
+        div(class='panel-body')
+          form(class='form-horizontal' action='./' method='post')
+            div(class='form-group')
+              label(class='control-label col-sm-2' for='loginId') ID
+              div(class='col-sm-4')
+                input(type='text' name='id' class='form-control' id='loginId' placeholder='ID')
+            div(class='form-group')
+              label(class='control-label col-sm-2' for='loginPassword') PASSWORD
+              div(class='col-sm-4')
+                input(type='password' name='password' class='form-control' id='loginPassword' placeholder='Password')
+            div(class='form-group')
+              div(class='col-sm-offset-2 col-sm-4')
+                button(type='submit' class='btn btn-default') LOGIN
+                if status == 'failed'
+                  span  Login Fail
           
+    

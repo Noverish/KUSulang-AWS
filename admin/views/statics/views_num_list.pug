@@ -1,0 +1,19 @@
+doctype html
+html
+  include ../head.pug
+  body
+    - var is_statics = 'active';
+    include ../nav.pug
+    include ./list_tab.pug
+    
+    div(class='container')
+      table(class='table table-responsive table-hover')
+        tr
+          th #
+          th title
+          th views
+        each val in results
+          tr
+            td=val._id
+            td=val.title
+            td=val.views

@@ -1,34 +1,35 @@
 {
-  "name": "kusulang",
-  "version": "0.0.0",
+  "name": "kusulang-admin",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon admin_app.js"
   },
   "dependencies": {
     "body-parser": "~1.16.0",
+    "bootstrap": "^3.3.7",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.0",
-    "ejs": "~2.5.5",
     "express": "~4.14.1",
+    "express-mysql-session": "^1.2.0",
     "express-session": "^1.15.2",
     "fcm-node": "^1.2.0",
     "gm": "^1.23.0",
     "method-override": "^2.3.8",
+    "moment": "^2.18.1",
     "morgan": "~1.7.0",
     "multer": "~1.1.0",
     "mysql": "^2.13.0",
-    "nconf": "^0.8.4",
-    "node-schedule": "^1.2.3",
+    "node-schedule": "^1.2.1",
     "passport": "^0.3.2",
     "pug": "^2.0.0-beta.12",
     "request": "^2.81.0",
     "sequelize": "^3.30.4",
     "serve-favicon": "~2.3.2"
   },
-  "main": "app.js",
+  "main": "admin_app.js",
   "devDependencies": {},
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "kusulang admin page"
 }

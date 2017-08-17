@@ -1,0 +1,29 @@
+ul(class='nav nav-pills')
+  if list_tab == 'today'
+    li(class='active')
+      a(href='/deliveries/') TO-DO list
+    li
+      a(href='/deliveries/all') All list
+    li
+      a(href='/deliveries/setting/') Setting
+  else if list_tab == 'all'
+    li
+      a(href='/deliveries/') TO-DO list
+    li(class='active')
+      a(href='/deliveries/all') All list
+    li
+      a(href='/deliveries/setting/') Setting
+  else if list_tab == 'setting'
+    li
+      a(href='/deliveries/') TO-DO list
+    li
+      a(href='/deliveries/all') All list
+    li(class='active')
+      a(href='/deliveries/setting/') Setting
+  else
+    li
+      a(href='/deliveries/') TO-DO list
+    li
+      a(href='/deliveries/all') All list
+    li
+      a(href='/deliveries/setting/') Setting

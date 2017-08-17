@@ -1,0 +1,909 @@
+module.js:471
+    throw err;
+    ^
+
+Error: Cannot find module 'passport'
+    at Function.Module._resolveFilename (module.js:469:15)
+    at Function.Module._load (module.js:417:25)
+    at Module.require (module.js:497:17)
+    at require (internal/module.js:20:19)
+    at module.exports (/home/ubuntu/node-project/kusulang/admin/config/mysql/passport.js:5:18)
+    at module.exports (/home/ubuntu/node-project/kusulang/admin/index.js:10:52)
+    at Object.<anonymous> (/home/ubuntu/node-project/kusulang/app.js:14:37)
+    at Module._compile (module.js:570:32)
+    at Object.Module._extensions..js (module.js:579:10)
+    at Module.load (module.js:487:32)
+module.js:471
+    throw err;
+    ^
+
+Error: Cannot find module 'passport'
+    at Function.Module._resolveFilename (module.js:469:15)
+    at Function.Module._load (module.js:417:25)
+    at Module.require (module.js:497:17)
+    at require (internal/module.js:20:19)
+    at module.exports (/home/ubuntu/node-project/kusulang/admin/config/mysql/passport.js:5:18)
+    at module.exports (/home/ubuntu/node-project/kusulang/admin/index.js:10:52)
+    at Object.<anonymous> (/home/ubuntu/node-project/kusulang/app.js:14:37)
+    at Module._compile (module.js:570:32)
+    at Object.Module._extensions..js (module.js:579:10)
+    at Module.load (module.js:487:32)
+
+> kusulang@0.0.0 start /home/ubuntu/node-project/kusulang
+> nodemon app.js
+
+[33m[nodemon] 1.11.0[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching: *.*[39m
+[32m[nodemon] starting `node app.js`[39m
+events.js:160
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+    at Error (native)
+
+npm ERR! Linux 4.4.0-64-generic
+npm ERR! argv "/usr/bin/nodejs" "/usr/bin/npm" "start"
+npm ERR! node v6.10.0
+npm ERR! npm  v3.10.10
+npm ERR! code ELIFECYCLE
+npm ERR! kusulang@0.0.0 start: `nodemon app.js`
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the kusulang@0.0.0 start script 'nodemon app.js'.
+npm ERR! Make sure you have the latest version of node.js and npm installed.
+npm ERR! If you do, this is most likely a problem with the kusulang package,
+npm ERR! not with npm itself.
+npm ERR! Tell the author that this fails on your system:
+npm ERR!     nodemon app.js
+npm ERR! You can get information on how to open an issue for this project with:
+npm ERR!     npm bugs kusulang
+npm ERR! Or if that isn't available, you can get their info via:
+npm ERR!     npm owner ls kusulang
+npm ERR! There is likely additional logging output above.
+
+npm ERR! Please include the following file with any support request:
+npm ERR!     /home/ubuntu/node-project/kusulang/npm-debug.log
+module.js:471
+    throw err;
+    ^
+
+Error: Cannot find module 'passport'
+    at Function.Module._resolveFilename (module.js:469:15)
+    at Function.Module._load (module.js:417:25)
+    at Module.require (module.js:497:17)
+    at require (internal/module.js:20:19)
+    at module.exports (/home/ubuntu/node-project/kusulang/admin/config/mysql/passport.js:5:18)
+    at module.exports (/home/ubuntu/node-project/kusulang/admin/index.js:10:52)
+    at Object.<anonymous> (/home/ubuntu/node-project/kusulang/app.js:14:37)
+    at Module._compile (module.js:570:32)
+    at Object.Module._extensions..js (module.js:579:10)
+    at Module.load (module.js:487:32)
+
+> kusulang@0.0.0 start /home/ubuntu/node-project/kusulang
+> nodemon app.js
+
+[33m[nodemon] 1.11.0[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching: *.*[39m
+[32m[nodemon] starting `node app.js`[39m
+events.js:160
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+    at Error (native)
+
+npm ERR! Linux 4.4.0-64-generic
+npm ERR! argv "/usr/bin/nodejs" "/usr/bin/npm" "start"
+npm ERR! node v6.10.0
+npm ERR! npm  v3.10.10
+npm ERR! code ELIFECYCLE
+npm ERR! kusulang@0.0.0 start: `nodemon app.js`
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the kusulang@0.0.0 start script 'nodemon app.js'.
+npm ERR! Make sure you have the latest version of node.js and npm installed.
+npm ERR! If you do, this is most likely a problem with the kusulang package,
+npm ERR! not with npm itself.
+npm ERR! Tell the author that this fails on your system:
+npm ERR!     nodemon app.js
+npm ERR! You can get information on how to open an issue for this project with:
+npm ERR!     npm bugs kusulang
+npm ERR! Or if that isn't available, you can get their info via:
+npm ERR!     npm owner ls kusulang
+npm ERR! There is likely additional logging output above.
+
+npm ERR! Please include the following file with any support request:
+npm ERR!     /home/ubuntu/node-project/kusulang/npm-debug.log
+module.js:471
+    throw err;
+    ^
+
+Error: Cannot find module 'mysql'
+    at Function.Module._resolveFilename (module.js:469:15)
+    at Function.Module._load (module.js:417:25)
+    at Module.require (module.js:497:17)
+    at require (internal/module.js:20:19)
+    at module.exports (/home/ubuntu/node-project/kusulang/admin/config/mysql/db.js:6:15)
+    at module.exports (/home/ubuntu/node-project/kusulang/admin/config/mysql/passport.js:4:29)
+    at module.exports (/home/ubuntu/node-project/kusulang/admin/index.js:10:52)
+    at Object.<anonymous> (/home/ubuntu/node-project/kusulang/app.js:14:37)
+    at Module._compile (module.js:570:32)
+    at Object.Module._extensions..js (module.js:579:10)
+
+> kusulang@0.0.0 start /home/ubuntu/node-project/kusulang
+> nodemon app.js
+
+[33m[nodemon] 1.11.0[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching: *.*[39m
+[32m[nodemon] starting `node app.js`[39m
+events.js:160
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+    at Error (native)
+
+npm ERR! Linux 4.4.0-64-generic
+npm ERR! argv "/usr/bin/nodejs" "/usr/bin/npm" "start"
+npm ERR! node v6.10.0
+npm ERR! npm  v3.10.10
+npm ERR! code ELIFECYCLE
+npm ERR! kusulang@0.0.0 start: `nodemon app.js`
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the kusulang@0.0.0 start script 'nodemon app.js'.
+npm ERR! Make sure you have the latest version of node.js and npm installed.
+npm ERR! If you do, this is most likely a problem with the kusulang package,
+npm ERR! not with npm itself.
+npm ERR! Tell the author that this fails on your system:
+npm ERR!     nodemon app.js
+npm ERR! You can get information on how to open an issue for this project with:
+npm ERR!     npm bugs kusulang
+npm ERR! Or if that isn't available, you can get their info via:
+npm ERR!     npm owner ls kusulang
+npm ERR! There is likely additional logging output above.
+
+npm ERR! Please include the following file with any support request:
+npm ERR!     /home/ubuntu/node-project/kusulang/npm-debug.log
+module.js:471
+    throw err;
+    ^
+
+Error: Cannot find module 'passport'
+    at Function.Module._resolveFilename (module.js:469:15)
+    at Function.Module._load (module.js:417:25)
+    at Module.require (module.js:497:17)
+    at require (internal/module.js:20:19)
+    at module.exports (/home/ubuntu/node-project/kusulang/admin/config/mysql/passport.js:5:18)
+    at module.exports (/home/ubuntu/node-project/kusulang/admin/index.js:10:52)
+    at Object.<anonymous> (/home/ubuntu/node-project/kusulang/app.js:14:37)
+    at Module._compile (module.js:570:32)
+    at Object.Module._extensions..js (module.js:579:10)
+    at Module.load (module.js:487:32)
+
+> kusulang@0.0.0 start /home/ubuntu/node-project/kusulang
+> nodemon app.js
+
+[33m[nodemon] 1.11.0[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching: *.*[39m
+[32m[nodemon] starting `node app.js`[39m
+events.js:160
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+    at Error (native)
+
+npm ERR! Linux 4.4.0-64-generic
+npm ERR! argv "/usr/bin/nodejs" "/usr/bin/npm" "start"
+npm ERR! node v6.10.0
+npm ERR! npm  v3.10.10
+npm ERR! code ELIFECYCLE
+npm ERR! kusulang@0.0.0 start: `nodemon app.js`
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the kusulang@0.0.0 start script 'nodemon app.js'.
+npm ERR! Make sure you have the latest version of node.js and npm installed.
+npm ERR! If you do, this is most likely a problem with the kusulang package,
+npm ERR! not with npm itself.
+npm ERR! Tell the author that this fails on your system:
+npm ERR!     nodemon app.js
+npm ERR! You can get information on how to open an issue for this project with:
+npm ERR!     npm bugs kusulang
+npm ERR! Or if that isn't available, you can get their info via:
+npm ERR!     npm owner ls kusulang
+npm ERR! There is likely additional logging output above.
+
+npm ERR! Please include the following file with any support request:
+npm ERR!     /home/ubuntu/node-project/kusulang/npm-debug.log
+module.js:471
+    throw err;
+    ^
+
+Error: Cannot find module 'passport'
+    at Function.Module._resolveFilename (module.js:469:15)
+    at Function.Module._load (module.js:417:25)
+    at Module.require (module.js:497:17)
+    at require (internal/module.js:20:19)
+    at module.exports (/home/ubuntu/node-project/kusulang/admin/config/mysql/passport.js:5:18)
+    at module.exports (/home/ubuntu/node-project/kusulang/admin/index.js:10:52)
+    at Object.<anonymous> (/home/ubuntu/node-project/kusulang/app.js:14:37)
+    at Module._compile (module.js:570:32)
+    at Object.Module._extensions..js (module.js:579:10)
+    at Module.load (module.js:487:32)
+module.js:471
+    throw err;
+    ^
+
+Error: Cannot find module 'passport'
+    at Function.Module._resolveFilename (module.js:469:15)
+    at Function.Module._load (module.js:417:25)
+    at Module.require (module.js:497:17)
+    at require (internal/module.js:20:19)
+    at module.exports (/home/ubuntu/node-project/kusulang/admin/config/mysql/passport.js:5:18)
+    at module.exports (/home/ubuntu/node-project/kusulang/admin/index.js:10:52)
+    at Object.<anonymous> (/home/ubuntu/node-project/kusulang/app.js:14:37)
+    at Module._compile (module.js:570:32)
+    at Object.Module._extensions..js (module.js:579:10)
+    at Module.load (module.js:487:32)
+module.js:471
+    throw err;
+    ^
+
+Error: Cannot find module 'passport'
+    at Function.Module._resolveFilename (module.js:469:15)
+    at Function.Module._load (module.js:417:25)
+    at Module.require (module.js:497:17)
+    at require (internal/module.js:20:19)
+    at module.exports (/home/ubuntu/node-project/kusulang/admin/config/mysql/passport.js:5:18)
+    at module.exports (/home/ubuntu/node-project/kusulang/admin/index.js:10:52)
+    at Object.<anonymous> (/home/ubuntu/node-project/kusulang/app.js:14:37)
+    at Module._compile (module.js:570:32)
+    at Object.Module._extensions..js (module.js:579:10)
+    at Module.load (module.js:487:32)
+module.js:471
+    throw err;
+    ^
+
+Error: Cannot find module 'passport'
+    at Function.Module._resolveFilename (module.js:469:15)
+    at Function.Module._load (module.js:417:25)
+    at Module.require (module.js:497:17)
+    at require (internal/module.js:20:19)
+    at module.exports (/home/ubuntu/node-project/kusulang/admin/config/mysql/passport.js:5:18)
+    at module.exports (/home/ubuntu/node-project/kusulang/admin/index.js:10:52)
+    at Object.<anonymous> (/home/ubuntu/node-project/kusulang/app.js:14:37)
+    at Module._compile (module.js:570:32)
+    at Object.Module._extensions..js (module.js:579:10)
+    at Module.load (module.js:487:32)
+
+> kusulang@0.0.0 start /home/ubuntu/node-project/kusulang
+> nodemon app.js
+
+[33m[nodemon] 1.11.0[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching: *.*[39m
+[32m[nodemon] starting `node app.js`[39m
+events.js:160
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+    at Error (native)
+
+npm ERR! Linux 4.4.0-64-generic
+npm ERR! argv "/usr/bin/nodejs" "/usr/bin/npm" "start"
+npm ERR! node v6.10.0
+npm ERR! npm  v3.10.10
+npm ERR! code ELIFECYCLE
+npm ERR! kusulang@0.0.0 start: `nodemon app.js`
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the kusulang@0.0.0 start script 'nodemon app.js'.
+npm ERR! Make sure you have the latest version of node.js and npm installed.
+npm ERR! If you do, this is most likely a problem with the kusulang package,
+npm ERR! not with npm itself.
+npm ERR! Tell the author that this fails on your system:
+npm ERR!     nodemon app.js
+npm ERR! You can get information on how to open an issue for this project with:
+npm ERR!     npm bugs kusulang
+npm ERR! Or if that isn't available, you can get their info via:
+npm ERR!     npm owner ls kusulang
+npm ERR! There is likely additional logging output above.
+
+npm ERR! Please include the following file with any support request:
+npm ERR!     /home/ubuntu/node-project/kusulang/npm-debug.log
+module.js:471
+    throw err;
+    ^
+
+Error: Cannot find module 'passport'
+    at Function.Module._resolveFilename (module.js:469:15)
+    at Function.Module._load (module.js:417:25)
+    at Module.require (module.js:497:17)
+    at require (internal/module.js:20:19)
+    at module.exports (/home/ubuntu/node-project/kusulang/admin/config/mysql/passport.js:5:18)
+    at module.exports (/home/ubuntu/node-project/kusulang/admin/index.js:10:52)
+    at Object.<anonymous> (/home/ubuntu/node-project/kusulang/app.js:14:37)
+    at Module._compile (module.js:570:32)
+    at Object.Module._extensions..js (module.js:579:10)
+    at Module.load (module.js:487:32)
+
+> kusulang@0.0.0 start /home/ubuntu/node-project/kusulang
+> nodemon app.js
+
+[33m[nodemon] 1.11.0[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching: *.*[39m
+[32m[nodemon] starting `node app.js`[39m
+events.js:160
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+    at Error (native)
+
+npm ERR! Linux 4.4.0-64-generic
+npm ERR! argv "/usr/bin/nodejs" "/usr/bin/npm" "start"
+npm ERR! node v6.10.0
+npm ERR! npm  v3.10.10
+npm ERR! code ELIFECYCLE
+npm ERR! kusulang@0.0.0 start: `nodemon app.js`
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the kusulang@0.0.0 start script 'nodemon app.js'.
+npm ERR! Make sure you have the latest version of node.js and npm installed.
+npm ERR! If you do, this is most likely a problem with the kusulang package,
+npm ERR! not with npm itself.
+npm ERR! Tell the author that this fails on your system:
+npm ERR!     nodemon app.js
+npm ERR! You can get information on how to open an issue for this project with:
+npm ERR!     npm bugs kusulang
+npm ERR! Or if that isn't available, you can get their info via:
+npm ERR!     npm owner ls kusulang
+npm ERR! There is likely additional logging output above.
+
+npm ERR! Please include the following file with any support request:
+npm ERR!     /home/ubuntu/node-project/kusulang/npm-debug.log
+module.js:471
+    throw err;
+    ^
+
+Error: Cannot find module 'passport'
+    at Function.Module._resolveFilename (module.js:469:15)
+    at Function.Module._load (module.js:417:25)
+    at Module.require (module.js:497:17)
+    at require (internal/module.js:20:19)
+    at module.exports (/home/ubuntu/node-project/kusulang/admin/config/mysql/passport.js:5:18)
+    at module.exports (/home/ubuntu/node-project/kusulang/admin/index.js:10:52)
+    at Object.<anonymous> (/home/ubuntu/node-project/kusulang/app.js:14:37)
+    at Module._compile (module.js:570:32)
+    at Object.Module._extensions..js (module.js:579:10)
+    at Module.load (module.js:487:32)
+
+> kusulang@0.0.0 start /home/ubuntu/node-project/kusulang
+> nodemon app.js
+
+[33m[nodemon] 1.11.0[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching: *.*[39m
+[32m[nodemon] starting `node app.js`[39m
+events.js:160
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+    at Error (native)
+
+npm ERR! Linux 4.4.0-64-generic
+npm ERR! argv "/usr/bin/nodejs" "/usr/bin/npm" "start"
+npm ERR! node v6.10.0
+npm ERR! npm  v3.10.10
+npm ERR! code ELIFECYCLE
+npm ERR! kusulang@0.0.0 start: `nodemon app.js`
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the kusulang@0.0.0 start script 'nodemon app.js'.
+npm ERR! Make sure you have the latest version of node.js and npm installed.
+npm ERR! If you do, this is most likely a problem with the kusulang package,
+npm ERR! not with npm itself.
+npm ERR! Tell the author that this fails on your system:
+npm ERR!     nodemon app.js
+npm ERR! You can get information on how to open an issue for this project with:
+npm ERR!     npm bugs kusulang
+npm ERR! Or if that isn't available, you can get their info via:
+npm ERR!     npm owner ls kusulang
+npm ERR! There is likely additional logging output above.
+
+npm ERR! Please include the following file with any support request:
+npm ERR!     /home/ubuntu/node-project/kusulang/npm-debug.log
+module.js:471
+    throw err;
+    ^
+
+Error: Cannot find module 'passport'
+    at Function.Module._resolveFilename (module.js:469:15)
+    at Function.Module._load (module.js:417:25)
+    at Module.require (module.js:497:17)
+    at require (internal/module.js:20:19)
+    at module.exports (/home/ubuntu/node-project/kusulang/admin/config/mysql/passport.js:5:18)
+    at module.exports (/home/ubuntu/node-project/kusulang/admin/index.js:10:52)
+    at Object.<anonymous> (/home/ubuntu/node-project/kusulang/app.js:14:37)
+    at Module._compile (module.js:570:32)
+    at Object.Module._extensions..js (module.js:579:10)
+    at Module.load (module.js:487:32)
+
+> kusulang@0.0.0 start /home/ubuntu/node-project/kusulang
+> nodemon app.js
+
+[33m[nodemon] 1.11.0[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching: *.*[39m
+[32m[nodemon] starting `node app.js`[39m
+events.js:160
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+    at Error (native)
+
+npm ERR! Linux 4.4.0-64-generic
+npm ERR! argv "/usr/bin/nodejs" "/usr/bin/npm" "start"
+npm ERR! node v6.10.0
+npm ERR! npm  v3.10.10
+npm ERR! code ELIFECYCLE
+npm ERR! kusulang@0.0.0 start: `nodemon app.js`
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the kusulang@0.0.0 start script 'nodemon app.js'.
+npm ERR! Make sure you have the latest version of node.js and npm installed.
+npm ERR! If you do, this is most likely a problem with the kusulang package,
+npm ERR! not with npm itself.
+npm ERR! Tell the author that this fails on your system:
+npm ERR!     nodemon app.js
+npm ERR! You can get information on how to open an issue for this project with:
+npm ERR!     npm bugs kusulang
+npm ERR! Or if that isn't available, you can get their info via:
+npm ERR!     npm owner ls kusulang
+npm ERR! There is likely additional logging output above.
+
+npm ERR! Please include the following file with any support request:
+npm ERR!     /home/ubuntu/node-project/kusulang/npm-debug.log
+Express server listening on port 9000
+events.js:160
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE :::9000
+    at Object.exports._errnoException (util.js:1022:11)
+    at exports._exceptionWithHostPort (util.js:1045:20)
+    at Server._listen2 (net.js:1259:14)
+    at listen (net.js:1295:10)
+    at Server.listen (net.js:1391:5)
+    at EventEmitter.listen (/home/ubuntu/node-project/kusulang/node_modules/express/lib/application.js:617:24)
+    at Object.<anonymous> (/home/ubuntu/node-project/kusulang/app.js:58:18)
+    at Module._compile (module.js:570:32)
+    at Object.Module._extensions..js (module.js:579:10)
+    at Module.load (module.js:487:32)
+[0mGET / [36m304 [0m14.597 ms - -[0m
+[0mGET /stylesheets/style.css [36m304 [0m2.195 ms - -[0m
+Express server listening on port 9000
+[0mGET / [33m404 [0m15.932 ms - 918[0m
+[0mGET /admin/ [32m200 [0m509.400 ms - 1271[0m
+[0mGET /admin/articles/ [36m302 [0m10.463 ms - 58[0m
+[0mGET /admin/ [36m304 [0m161.034 ms - -[0m
+[0mPOST /store/710 [32m200 [0m11150.415 ms - 140[0m
+[0mPOST /admin/ [32m200 [0m159.469 ms - 847[0m
+[0mGET /admin/articles/ [32m200 [0m583.508 ms - 12004[0m
+[0mGET /admin/deliveries/ [32m200 [0m89.319 ms - 2087[0m
+[0mGET /admin/articles/ [36m304 [0m68.121 ms - -[0m
+[ RowDataPacket {
+    _id: 1,
+    writer_id: 1,
+    title: '안암 초밥집 비교하기(part. 1)',
+    img: 'https://s3.ap-northeast-2.amazonaws.com/kusulang-article/hanbumhee1_main.jpg',
+    url: 'http://ziumcompany.net/article/hanbumhee1.htm',
+    date: 2017-04-02T17:50:10.000Z,
+    views: 38,
+    name: '休食(휴식)' } ]
+[0mGET /admin/articles/1/ [32m200 [0m65.678 ms - 2208[0m
+[ RowDataPacket {
+    _id: 2,
+    writer_id: 2,
+    title: '흘러가는 시간 속 안암,\n첫번째 장소 \'공린가\'',
+    img: 'https://s3.ap-northeast-2.amazonaws.com/kusulang-article/choigunhee1_main.jpg',
+    url: 'http://ziumcompany.net/article/choigunhee1.htm',
+    date: 2017-04-02T17:49:44.000Z,
+    views: 27,
+    name: '최건희' } ]
+[0mGET /admin/articles/2/ [32m200 [0m74.188 ms - 2228[0m
+[ RowDataPacket {
+    _id: 44,
+    writer_id: 18,
+    title: '#3. Sad Cafe_나얼 \r\n 동파육육',
+    img: 'https://s3.ap-northeast-2.amazonaws.com/kusulang-test/simbumkyu_003_main.jpg',
+    url: 'https://s3.ap-northeast-2.amazonaws.com/kusulang-test/ryulchef_003_1.htm',
+    date: 2017-04-22T14:41:54.000Z,
+    views: 101,
+    name: '렬솊' } ]
+[0mGET /admin/articles/44/ [32m200 [0m61.868 ms - 2225[0m
+
+> kusulang@0.0.0 start /home/ubuntu/node-project/kusulang
+> nodemon app.js
+
+[33m[nodemon] 1.11.0[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching: *.*[39m
+[32m[nodemon] starting `node app.js`[39m
+events.js:160
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+    at Error (native)
+
+npm ERR! Linux 4.4.0-64-generic
+npm ERR! argv "/usr/bin/nodejs" "/usr/bin/npm" "start"
+npm ERR! node v6.10.0
+npm ERR! npm  v3.10.10
+npm ERR! code ELIFECYCLE
+npm ERR! kusulang@0.0.0 start: `nodemon app.js`
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the kusulang@0.0.0 start script 'nodemon app.js'.
+npm ERR! Make sure you have the latest version of node.js and npm installed.
+npm ERR! If you do, this is most likely a problem with the kusulang package,
+npm ERR! not with npm itself.
+npm ERR! Tell the author that this fails on your system:
+npm ERR!     nodemon app.js
+npm ERR! You can get information on how to open an issue for this project with:
+npm ERR!     npm bugs kusulang
+npm ERR! Or if that isn't available, you can get their info via:
+npm ERR!     npm owner ls kusulang
+npm ERR! There is likely additional logging output above.
+
+npm ERR! Please include the following file with any support request:
+npm ERR!     /home/ubuntu/node-project/kusulang/npm-debug.log
+Express server listening on port 9000
+[0mPOST /store/710 [32m200 [0m7438.592 ms - 140[0m
+[0mPOST /store/846 [32m200 [0m2943.723 ms - 140[0m
+[0mPOST /store/1129 [32m200 [0m9924.024 ms - 141[0m
+[0mPOST /store/710 [32m200 [0m3932.302 ms - 140[0m
+[0mHEAD / [33m404 [0m21.234 ms - 918[0m
+[0mGET / [33m404 [0m2.289 ms - 918[0m
+[0mGET / [33m404 [0m2.102 ms - 918[0m
+[0mGET http://www.baidu.com/cache/global/img/gs.gif [33m404 [0m2.577 ms - 918[0m
+[0mPOST /store/949 [32m200 [0m6669.875 ms - 140[0m
+[0mGET / [33m404 [0m3.274 ms - 918[0m
+[0mGET / [33m404 [0m2.500 ms - 918[0m
+[0mGET /index.jsp [33m404 [0m1.227 ms - 918[0m
+[0mGET /index.action [33m404 [0m1.241 ms - 918[0m
+[0mGET /index.htm [33m404 [0m1.643 ms - 918[0m
+[0mGET / [33m404 [0m0.927 ms - 918[0m
+[0mGET / [0m- [0m- ms - -[0m
+[0mGET /phpmyadmin/scripts/setup.php [33m404 [0m1.271 ms - 918[0m
+[0mGET / [33m404 [0m0.999 ms - 918[0m
+[0mGET / [33m404 [0m2.339 ms - 918[0m
+[0mGET / [33m404 [0m1.072 ms - 918[0m
+[0mGET / [33m404 [0m0.877 ms - 918[0m
+[0mGET / [33m404 [0m1.060 ms - 918[0m
+[0mGET /x [33m404 [0m1.055 ms - 918[0m
+[0mGET / [33m404 [0m0.886 ms - 918[0m
+[0mGET / [33m404 [0m1.897 ms - 918[0m
+[0mGET / [33m404 [0m1.467 ms - 918[0m
+[0mGET / [33m404 [0m1.510 ms - 918[0m
+[0mGET / [33m404 [0m0.851 ms - 918[0m
+[0mGET / [33m404 [0m1.326 ms - 918[0m
+[0mPOST /store/714 [32m200 [0m4686.195 ms - 140[0m
+[0mPOST /store/1122 [32m200 [0m3489.719 ms - 141[0m
+[0mPOST /store/1122 [32m200 [0m4122.167 ms - 141[0m
+[0mPOST / [33m404 [0m21.598 ms - 918[0m
+[0mPOST / [33m404 [0m9.805 ms - 918[0m
+[0mPOST / [33m404 [0m7.571 ms - 918[0m
+[0mPOST / [33m404 [0m1.494 ms - 918[0m
+[0mPOST / [33m404 [0m5.881 ms - 918[0m
+[0mPOST / [33m404 [0m1.103 ms - 918[0m
+[0mPOST / [33m404 [0m1.011 ms - 918[0m
+[0mPOST / [33m404 [0m1.682 ms - 918[0m
+[0mPOST / [33m404 [0m1.019 ms - 918[0m
+[0mPOST / [33m404 [0m4.599 ms - 918[0m
+[0mPOST / [33m404 [0m2.373 ms - 918[0m
+[0mPOST / [33m404 [0m1.484 ms - 918[0m
+[0mPOST / [33m404 [0m1.626 ms - 918[0m
+[0mPOST / [33m404 [0m0.966 ms - 918[0m
+[0mPOST / [33m404 [0m0.975 ms - 918[0m
+[0mPOST / [33m404 [0m2.369 ms - 918[0m
+[0mPOST / [33m404 [0m1.052 ms - 918[0m
+[0mPOST / [33m404 [0m0.983 ms - 918[0m
+[0mPOST / [33m404 [0m0.925 ms - 918[0m
+[0mPOST / [33m404 [0m1.478 ms - 918[0m
+[0mPOST / [33m404 [0m0.988 ms - 918[0m
+[0mPOST / [33m404 [0m1.493 ms - 918[0m
+[0mPOST / [33m404 [0m0.912 ms - 918[0m
+[0mPOST / [33m404 [0m2.457 ms - 918[0m
+[0mPOST / [33m404 [0m1.218 ms - 918[0m
+[0mPOST / [33m404 [0m0.972 ms - 918[0m
+[0mPOST / [33m404 [0m3.871 ms - 918[0m
+[0mPOST / [33m404 [0m0.943 ms - 918[0m
+[0mPOST / [33m404 [0m1.680 ms - 918[0m
+[0mPOST / [33m404 [0m0.977 ms - 918[0m
+[0mPOST / [33m404 [0m0.968 ms - 918[0m
+[0mPOST / [33m404 [0m0.948 ms - 918[0m
+[0mPOST / [33m404 [0m0.950 ms - 918[0m
+[0mPOST / [33m404 [0m1.434 ms - 918[0m
+[0mPOST / [33m404 [0m1.985 ms - 918[0m
+[0mPOST / [33m404 [0m2.297 ms - 918[0m
+[0mPOST / [33m404 [0m1.277 ms - 918[0m
+[0mPOST / [33m404 [0m0.979 ms - 918[0m
+[0mPOST / [33m404 [0m1.032 ms - 918[0m
+[0mGET / [33m404 [0m2.485 ms - 918[0m
+[0mPOST / [33m404 [0m0.979 ms - 918[0m
+[0mGET /phpmyadmin [33m404 [0m1.969 ms - 918[0m
+[0mPOST / [33m404 [0m1.617 ms - 918[0m
+[0mPOST / [33m404 [0m0.906 ms - 918[0m
+[0mPOST / [33m404 [0m0.976 ms - 918[0m
+[0mPOST / [33m404 [0m1.004 ms - 918[0m
+[0mPOST / [33m404 [0m1.631 ms - 918[0m
+[0mPOST / [33m404 [0m1.754 ms - 918[0m
+[0mGET http://www.baidu.com/cache/global/img/gs.gif [33m404 [0m0.970 ms - 918[0m
+[0mPOST / [33m404 [0m0.917 ms - 918[0m
+[0mPOST / [33m404 [0m0.957 ms - 918[0m
+[0mGET / [33m404 [0m1.267 ms - 918[0m
+[0mGET / [33m404 [0m0.824 ms - 918[0m
+[0mGET / [33m404 [0m0.896 ms - 918[0m
+[0mGET / [33m404 [0m0.841 ms - 918[0m
+[0mGET / [33m404 [0m0.872 ms - 918[0m
+[0mGET / [33m404 [0m0.852 ms - 918[0m
+[0mGET / [33m404 [0m0.841 ms - 918[0m
+[0mGET / [33m404 [0m1.734 ms - 918[0m
+[0mGET / [33m404 [0m0.870 ms - 918[0m
+[0mGET / [33m404 [0m0.843 ms - 918[0m
+[0mPOST /store/648 [32m200 [0m31260.066 ms - 140[0m
+[0mPOST /store/648 [0m- [0m- ms - -[0m
+[0mPOST /store/648 [32m200 [0m27968.427 ms - 140[0m
+[0mPOST /store/648 [0m- [0m- ms - -[0m
+[0mPOST /store/648 [32m200 [0m11448.307 ms - 140[0m
+[0mHEAD / [33m404 [0m7.789 ms - 918[0m
+[0mGET / [33m404 [0m2.393 ms - 918[0m
+[0mGET /favicon.ico [33m404 [0m1.708 ms - 918[0m
+[0mPOST /store/971 [0m- [0m- ms - -[0m
+[0mPOST /store/971 [32m200 [0m7113.354 ms - 140[0m
+[0mPOST /store/691 [32m200 [0m3073.924 ms - 140[0m
+[0mPOST /store/691 [32m200 [0m3141.948 ms - 140[0m
+[0mPOST /store/743 [32m200 [0m3334.692 ms - 140[0m
+[0mGET / [33m404 [0m7.454 ms - 918[0m
+[0mPOST /store/1008 [32m200 [0m8113.008 ms - 141[0m
+[0mPOST /store/1008 [32m200 [0m7259.806 ms - 141[0m
+[0mGET / [33m404 [0m3.247 ms - 918[0m
+[0mGET / [33m404 [0m1.127 ms - 918[0m
+[0mGET /favicon.ico [33m404 [0m1.344 ms - 918[0m
+[0mGET /admin [32m200 [0m553.744 ms - 1271[0m
+[0mGET /admin [36m304 [0m156.560 ms - -[0m
+[0mGET / [33m404 [0m13.212 ms - 918[0m
+[0mGET / [33m404 [0m1.423 ms - 918[0m
+[0mGET / [33m404 [0m1.128 ms - 918[0m
+[0mPOST /store/751 [32m200 [0m4401.593 ms - 140[0m
+[0mPOST /store/751 [32m200 [0m3299.072 ms - 140[0m
+[0mGET / [33m404 [0m16.777 ms - 918[0m
+[0mPOST /store/751 [32m200 [0m4772.754 ms - 140[0m
+[0mPOST /store/751 [32m200 [0m3473.994 ms - 140[0m
+[0mPOST /store/751 [32m200 [0m3219.867 ms - 140[0m
+[0mPOST /store/751 [32m200 [0m2726.542 ms - 140[0m
+[0mGET /check [33m404 [0m14.478 ms - 918[0m
+[0mPOST /store/925 [32m200 [0m3660.782 ms - 140[0m
+[0mPOST /store/925 [32m200 [0m1806.956 ms - 140[0m
+[0mPOST /store/925 [32m200 [0m1847.791 ms - 140[0m
+[0mPOST /store/862 [32m200 [0m1961.386 ms - 140[0m
+[0mPOST /store/862 [32m200 [0m2235.665 ms - 140[0m
+[0mPOST /store/862 [32m200 [0m3226.262 ms - 140[0m
+[0mGET /hndUnblock.cgi [33m404 [0m8.992 ms - 918[0m
+[0mGET /tmUnblock.cgi [33m404 [0m2.041 ms - 918[0m
+[0mGET /language/Swedish${IFS}&&echo${IFS}610cker>qt&&tar${IFS}/string.js [33m404 [0m1.147 ms - 918[0m
+[0mGET /../../../../../../../mnt/mtd/qt [33m404 [0m1.248 ms - 918[0m
+[0mPOST /store/862 [32m200 [0m4808.158 ms - 140[0m
+[0mPOST /store/862 [32m200 [0m5347.263 ms - 140[0m
+[0mPOST /store/862 [32m200 [0m2826.129 ms - 140[0m
+[0mPOST /store/862 [32m200 [0m3381.305 ms - 140[0m
+[0mPOST /store/862 [32m200 [0m3154.072 ms - 140[0m
+[0mPOST /store/862 [32m200 [0m3213.224 ms - 140[0m
+[0mPOST /store/1122 [32m200 [0m6073.875 ms - 141[0m
+[0mPOST /store/862 [32m200 [0m2987.289 ms - 140[0m
+[0mPOST /store/862 [32m200 [0m3368.867 ms - 140[0m
+[0mPOST /store/714 [32m200 [0m3135.848 ms - 140[0m
+[0mPOST /store/936 [32m200 [0m2303.077 ms - 140[0m
+[0mPOST /store/714 [32m200 [0m3127.550 ms - 140[0m
+[0mPOST /store/1083 [32m200 [0m1420.471 ms - 141[0m
+[0mPOST /store/862 [32m200 [0m3282.832 ms - 140[0m
+[0mPOST /store/862 [32m200 [0m3542.577 ms - 140[0m
+[0mGET / [33m404 [0m10.559 ms - 918[0m
+[0mGET / [33m404 [0m2.042 ms - 918[0m
+[0mGET / [33m404 [0m1.154 ms - 918[0m
+[0mPOST /store/1053 [32m200 [0m4408.478 ms - 141[0m
+[0mGET / [33m404 [0m3.182 ms - 918[0m
+[0mGET /favicon.ico [33m404 [0m1.659 ms - 918[0m
+[0mGET /admin [32m200 [0m189.818 ms - 1271[0m
+[0mGET /deliveries/ [33m404 [0m24.683 ms - 918[0m
+[0mGET /admin [36m304 [0m182.692 ms - -[0m
+[0mPOST / [33m404 [0m4.713 ms - 918[0m
+[0mPOST / [33m404 [0m2.573 ms - 918[0m
+[0mGET /articles/ [33m404 [0m1.269 ms - 918[0m
+[0mGET /admin [36m304 [0m129.655 ms - -[0m
+[0mPOST / [33m404 [0m1.336 ms - 918[0m
+[0mPOST /store/710 [32m200 [0m9616.098 ms - 140[0m
+[0mPOST / [33m404 [0m2.300 ms - 918[0m
+[0mPOST / [33m404 [0m1.683 ms - 918[0m
+[0mGET /admin [36m304 [0m107.820 ms - -[0m
+[0mGET /articles/ [33m404 [0m1.536 ms - 918[0m
+[0mGET /admin/article [33m404 [0m2.152 ms - 918[0m
+[0mGET /admin/ [32m200 [0m136.063 ms - 1271[0m
+[0mGET /admin/deliveries/ [36m302 [0m7.134 ms - 58[0m
+[0mGET /admin/ [36m304 [0m97.733 ms - -[0m
+[0mGET /admin/deliveries/ [36m302 [0m1.389 ms - 58[0m
+[0mGET /admin/ [36m304 [0m68.614 ms - -[0m
+[0mGET /admin/deliveries/ [36m302 [0m1.687 ms - 58[0m
+[0mGET /admin/ [36m304 [0m43.581 ms - -[0m
+[0mGET /admin/articles/ [36m302 [0m2.165 ms - 58[0m
+[0mGET /admin/ [36m304 [0m44.746 ms - -[0m
+[0mGET /admin/deliveries/ [36m302 [0m8.700 ms - 58[0m
+[0mGET /admin/ [36m304 [0m90.090 ms - -[0m
+[0mPOST /admin/ [32m200 [0m83.318 ms - 847[0m
+[0mGET /admin/deliveries/ [32m200 [0m86.426 ms - 2087[0m
+[0mGET /admin/deliveries/1/ [32m200 [0m44.649 ms - 1230[0m
+[0mGET /admin/deliveries/1/ [36m304 [0m35.797 ms - -[0m
+[0mGET /admin/deliveries/1/ [36m304 [0m36.972 ms - -[0m
+[0mGET /admin/ [32m200 [0m30.924 ms - 1271[0m
+[0mGET /admin/ [32m200 [0m33.636 ms - 1271[0m
+[0mGET /favicon.ico [33m404 [0m1.638 ms - 918[0m
+[0mGET /admin/ [32m200 [0m25.128 ms - 1271[0m
+[0mGET /favicon.ico [33m404 [0m0.977 ms - 918[0m
+[0mPOST /admin/ [32m200 [0m28.682 ms - 847[0m
+[0mGET /admin/deliveries/ [32m200 [0m45.990 ms - 2087[0m
+[0mGET /admin/deliveries/write/ [32m200 [0m29.859 ms - 1230[0m
+[0mGET /admin/deliveries/1/ [32m200 [0m24.197 ms - 1230[0m
+[0mGET /admin/deliveries/1/ [36m304 [0m23.045 ms - -[0m
+[0mGET /admin/ [32m200 [0m30.661 ms - 847[0m
+[0mGET /admin/ [36m304 [0m25.631 ms - -[0m
+[0mGET /admin/ [36m304 [0m24.237 ms - -[0m
+[0mGET /admin/articles/ [32m200 [0m346.449 ms - 11724[0m
+[0mGET /admin/deliveries/ [36m304 [0m53.751 ms - -[0m
+[0mGET http://www.baidu.com/cache/global/img/gs.gif [33m404 [0m0.958 ms - 918[0m
+[0mGET /favicon.ico [33m404 [0m0.862 ms - 918[0m
+[0mGET / [33m404 [0m3.301 ms - 918[0m
+[0mGET / [33m404 [0m0.933 ms - 918[0m
+[0mGET / [33m404 [0m0.933 ms - 918[0m
+[0mGET / [33m404 [0m1.457 ms - 918[0m
+[0mGET /favicon.ico [33m404 [0m0.947 ms - 918[0m
+[0mPOST /store/618 [32m200 [0m1747.901 ms - 140[0m
+[0mGET / [33m404 [0m9.820 ms - 918[0m
+[0mGET /admin/ [32m200 [0m31.783 ms - 847[0m
+[0mGET /admin/deliveries/ [36m304 [0m51.165 ms - -[0m
+[0mGET /admin/articles/ [32m200 [0m228.046 ms - 11724[0m
+[ RowDataPacket {
+    _id: 43,
+    writer_id: 9,
+    title: '6000원의 행복, \n 해애애물! 치이이즈! 떡볶이',
+    img: 'https://s3.ap-northeast-2.amazonaws.com/kusulang-article/umughangmug_003_main.jpg',
+    url: 'http://ziumcompany.net/article/umughangmug_003.htm',
+    date: 2017-04-22T14:41:51.000Z,
+    views: 45,
+    name: '어먹행먹' } ]
+[0mGET /admin/articles/43/ [32m200 [0m89.738 ms - 2242[0m
+[ RowDataPacket {
+    _id: 43,
+    writer_id: 9,
+    title: '6000원의 행복, \n 해애애물! 치이이즈! 떡볶이',
+    img: 'https://s3.ap-northeast-2.amazonaws.com/kusulang-article/umughangmug_003_main.jpg',
+    url: 'http://ziumcompany.net/article/umughangmug_003.htm',
+    date: 2017-04-22T14:41:51.000Z,
+    views: 45,
+    name: '어먹행먹' } ]
+[0mGET /admin/articles/43/ [36m304 [0m135.167 ms - -[0m
+[0mGET /admin/ [32m200 [0m83.339 ms - 1271[0m
+[0mGET /admin/ [32m200 [0m69.901 ms - 1271[0m
+[0mGET /favicon.ico [33m404 [0m1.611 ms - 918[0m
+[0mGET /admin/ [32m200 [0m61.385 ms - 1271[0m
+[0mGET /favicon.ico [33m404 [0m0.943 ms - 918[0m
+[0mPOST /admin/ [32m200 [0m38.054 ms - 847[0m
+[0mGET /admin/deliveries/ [32m200 [0m49.568 ms - 2087[0m
+[0mGET /admin/deliveries/1/ [32m200 [0m36.388 ms - 1230[0m
+[0mGET /admin/deliveries/1/ [36m304 [0m30.798 ms - -[0m
+[0mGET /admin/deliveries/1/ [36m304 [0m31.365 ms - -[0m
+[0mGET /admin/deliveries/1/modify/ [33m404 [0m1.598 ms - 918[0m
+[0mGET /admin/deliveries/1/ [36m304 [0m27.186 ms - -[0m
+[0mGET /admin/deliveries/1/ [36m304 [0m30.473 ms - -[0m
+[0mGET /admin/deliveries/1/ [36m304 [0m36.556 ms - -[0m
+[0mGET /admin/deliveries/1/ [36m304 [0m33.236 ms - -[0m
+[0mGET /admin/deliveries/1/ [36m304 [0m32.553 ms - -[0m
+[0mGET /admin/deliveries/1/ [36m304 [0m29.983 ms - -[0m
+[0mPOST /admin/ [32m200 [0m27.583 ms - 1288[0m
+[0mPOST /admin/ [32m200 [0m35.536 ms - 847[0m
+[0mGET /admin/deliveries/ [32m200 [0m39.296 ms - 2087[0m
+[0mGET /admin/articles/ [32m200 [0m178.939 ms - 11724[0m
+[0mGET /admin/deliveries/ [36m304 [0m46.276 ms - -[0m
+[0mGET /admin/deliveries/1/ [32m200 [0m27.070 ms - 1230[0m
+[0mGET /admin/articles/ [36m304 [0m203.738 ms - -[0m
+[0mGET /admin/deliveries/ [36m304 [0m39.658 ms - -[0m
+[0mGET /admin/deliveries/1/ [36m304 [0m25.607 ms - -[0m
+[0mGET /admin/deliveries/1/ [36m304 [0m25.640 ms - -[0m
+[0mGET /admin/deliveries/1/ [36m304 [0m27.119 ms - -[0m
+[0mPOST /store/862 [32m200 [0m6032.557 ms - 140[0m
+[0mPOST /store/862 [32m200 [0m6082.858 ms - 140[0m
+[0mGET /admin/deliveries/ [36m304 [0m51.573 ms - -[0m
+[0mGET /admin/deliveries/ [36m304 [0m135.644 ms - -[0m
+[0mGET /admin/deliveries/1/ [36m304 [0m52.439 ms - -[0m
+[0mGET /admin/deliveries/1/ [36m304 [0m64.493 ms - -[0m
+[0mGET /admin/deliveries/articles/ [32m200 [0m56.717 ms - 1230[0m
+[0mGET /admin/deliveries/deliveries/ [32m200 [0m48.849 ms - 1230[0m
+[0mGET /admin/deliveries/1/ [36m304 [0m39.659 ms - -[0m
+[0mGET /admin/deliveries/1/ [36m304 [0m48.985 ms - -[0m
+[0mGET /admin/deliveries/1/ [36m304 [0m37.320 ms - -[0m
+[0mGET /admin/deliveries/1/ [36m304 [0m28.890 ms - -[0m
+[0mGET /admin/deliveries/1/ [36m304 [0m32.221 ms - -[0m
+[0mPOST /store/585 [32m200 [0m4524.258 ms - 140[0m
+[0mPOST /store/654 [32m200 [0m5673.998 ms - 140[0m
+[0mPOST /store/1112 [32m200 [0m5384.812 ms - 141[0m
+[0mPOST /store/1112 [32m200 [0m8433.918 ms - 141[0m
+[0mPOST /store/1112 [32m200 [0m8060.557 ms - 141[0m
+[0mPOST /store/1112 [32m200 [0m1975.130 ms - 141[0m
+[0mPOST /store/774 [32m200 [0m3569.859 ms - 140[0m
+[0mGET /w00tw00t.at.blackhats.romanian.anti-sec:) [33m404 [0m7.633 ms - 918[0m
+[0mGET /phpMyAdmin/scripts/setup.php [33m404 [0m1.815 ms - 918[0m
+[0mGET /phpmyadmin/scripts/setup.php [33m404 [0m9.352 ms - 918[0m
+[0mGET /pma/scripts/setup.php [33m404 [0m1.452 ms - 918[0m
+[0mGET /myadmin/scripts/setup.php [33m404 [0m1.113 ms - 918[0m
+[0mGET /MyAdmin/scripts/setup.php [33m404 [0m1.057 ms - 918[0m
+[0mGET /PHPMYADMIN/scripts/setup.php [33m404 [0m0.906 ms - 918[0m
+[0mGET /mysqladmin/scripts/setup.php [33m404 [0m0.906 ms - 918[0m
+[0mGET /SQL/scripts/setup.php [33m404 [0m0.865 ms - 918[0m
+[0mPOST /store/862 [32m200 [0m5737.672 ms - 140[0m
+[0mGET /recordings/index.php [33m404 [0m4.674 ms - 918[0m
+[0mGET /recordings/index.php [33m404 [0m1.129 ms - 918[0m
+[0mGET / [33m404 [0m2.677 ms - 918[0m
+[0mPOST /store/908 [32m200 [0m1272.003 ms - 140[0m
+[0mPOST /store/908 [32m200 [0m1213.533 ms - 140[0m
+[0mPOST /store/804 [32m200 [0m1368.356 ms - 140[0m
+[0mPOST /store/804 [32m200 [0m1414.919 ms - 140[0m
+[0mPOST /store/862 [32m200 [0m1973.538 ms - 140[0m
+[0mPOST /store/862 [32m200 [0m1645.206 ms - 140[0m
+[0mPOST /store/862 [32m200 [0m1730.143 ms - 140[0m
+[0mGET http://cn.bing.com/ [33m404 [0m7.986 ms - 918[0m
+[0mGET / [33m404 [0m2.077 ms - 918[0m
+[0mPOST /store/862 [32m200 [0m6867.480 ms - 140[0m
+[0mPOST /store/862 [32m200 [0m7120.674 ms - 140[0m
+[0mGET http://www.baidu.com/cache/global/img/gs.gif [33m404 [0m2.769 ms - 918[0m
+[0mPOST /store/728 [32m200 [0m1503.908 ms - 140[0m
+[0mPOST /store/728 [32m200 [0m1479.869 ms - 140[0m
+[0mPOST /store/728 [32m200 [0m1604.753 ms - 140[0m
+[0mPOST /store/1028 [32m200 [0m3566.215 ms - 141[0m
+[0mPOST /store/929 [32m200 [0m5644.614 ms - 140[0m
+[0mPOST /store/929 [32m200 [0m8528.008 ms - 140[0m
+[0mPOST /store/1083 [32m200 [0m4693.633 ms - 141[0m
+[0mPOST /store/1083 [32m200 [0m6785.258 ms - 141[0m
+[0mGET / [33m404 [0m7.782 ms - 918[0m
+[0mGET /css/mycss.css [33m404 [0m3.170 ms - 918[0m
+[0mGET / [33m404 [0m1.886 ms - 918[0m
+[0mGET / [33m404 [0m1.132 ms - 918[0m
+[0mPOST /store/954 [32m200 [0m3655.097 ms - 140[0m
+[0mPOST /store/954 [32m200 [0m5499.324 ms - 140[0m
+[0mPOST /store/710 [32m200 [0m5714.627 ms - 140[0m
+[0mGET / [33m404 [0m16.148 ms - 918[0m
+[0mGET /favicon.ico [33m404 [0m1.999 ms - 918[0m
+[0mGET /admin [32m200 [0m90.896 ms - 1271[0m
+[0mPOST /store/710 [32m200 [0m7122.932 ms - 140[0m
+[0mGET / [33m404 [0m14.065 ms - 918[0m
+[0mGET / [33m404 [0m1.880 ms - 918[0m
+[0mGET /favicon.ico [33m404 [0m1.153 ms - 918[0m
+[0mGET /admin/ [32m200 [0m76.984 ms - 1271[0m
+[0mGET / [33m404 [0m2.157 ms - 918[0m
+[0mGET / [33m404 [0m1.585 ms - 918[0m
+[0mGET / [33m404 [0m1.303 ms - 918[0m
+[0mGET / [33m404 [0m0.957 ms - 918[0m
+[0mGET / [33m404 [0m0.972 ms - 918[0m
+[0mGET / [33m404 [0m0.961 ms - 918[0m
+[0mGET / [33m404 [0m1.405 ms - 918[0m
+[0mGET / [33m404 [0m0.905 ms - 918[0m

@@ -1,0 +1,56 @@
+doctype html
+html
+  include ../head.pug
+  body
+    - var is_deliveries = 'active';
+    include ../nav.pug
+    include ./list_tab.pug
+    
+    div(class='container-delivery')
+      div(class='panel panel-default')
+        div(class='panel-delivery')
+          div(class='container')
+            form(class='form-horizontal' action='./deliverable' method='post')
+              div(class='form-group form-group')
+                label(class='col-xs-3 control-label' for='deliverableStatus') 배달상태
+                if config.available == 0
+                  div(class='col-xs-3')
+                    a CLOSE
+                  div(class='col-xs-3')
+                    input(type='hidden' class='form-control' name='deliverable' id='deliverableStatus' value=1)
+                    button(type='submit' class='btn btn-default glyphicon glyphicon-play')
+                else
+                  div(class='col-xs-3')
+                    a 영업 중!
+                  div(class='col-xs-3')
+                    input(type='hidden' class='form-control' name='deliverable' id='deliverableStatus' value=0)
+                    button(type='submit' class='btn btn-default glyphicon glyphicon-stop')
+                  
+            form(class='form-horizontal' action='./time' method='post')
+              div(class='form-group')
+                label(class='col-xs-2 control-label' for='startHour') 시작시간
+                div(class='col-xs-3')
+                  select(class='form-control' name='startHour' id='startHour')
+                    - var time = 1;
+                    while time <= 24
+                      if config.startTime.hour == time
+                        option(value=time selected)= time++
+                      else
+                        option(value=time)= time++
+                label(class='col-xs-2 control-label' for='endHour') 종료시간
+                div(class='col-xs-3')
+                  select(class='form-control' name='endHour' id='endHour')
+                    - var time = 1;
+                    while time <= 24
+                      if config.endTime.hour == time
+                        option(value=time selected)= time++
+                      else
+                        option(value=time)= time++
+                button(type='submit' class='btn btn-default glyphicon glyphicon-ok')
+                        
+            //- form(class='form-horizontal' action='./' method='post')
+            //-   div(class='form-group form-group')
+            //-     label(class='col-xs-3 control-label' for='adminToken') 관리자토큰
+            //-     div(class='col-xs-6 input-group')
+            //-       input(type='text' class='form-control' id='adminToken' value=config.admin_token)
+            //-     button(class='col-xs-2 btn btn-default glyphicon glyphicon-ok')

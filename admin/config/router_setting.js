@@ -25,11 +25,11 @@ module.exports = function(router) {
     }
   }));
 
-  router.all('*',function(req, res, next){
+  router.all('*', function(req, res, next){
     // console.log(router);
     if(req.session.status !== 'admin' ||
         req.session.status === undefined) {
-      res.redirect('/admin/');
+      res.redirect('/');
     } else {
       next();
     }

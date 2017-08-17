@@ -1,7 +1,23 @@
-ul(class='nav nav-tabs')
-  li(role='login_status' class=is_home)
-    a(href='../') Home
-  li(role='articles' class=is_articles) 
-    a(href='../articles/') Articles
-  li(role='deliveries' class=is_deliveries) 
-    a(href='../deliveries/') Deliveries
+nav(class='navbar navbar-default navbar-fixed-top')
+  div(class='container-fluid')
+    div(class='navbar-header')
+      a(href='/' class='navbar-brand')
+        img(height='20' alt='Brand' src='https://s3.ap-northeast-2.amazonaws.com/kusulang-asset/admin/logo.jpg')
+      button(type='button' class='navbar-toggle glyphicon glyphicon-menu-hamburger' data-toggle='collapse' data-target='#navBar')
+    div(class='collapse navbar-collapse' id='navBar')
+      ul(class='nav navbar-nav')
+        li(role='login_status' class=is_home)
+          a(href='/') Home
+        li(role='articles' class=is_articles) 
+          a(href='/articles/') Articles
+        li(role='banners' class=is_banners)
+          a(href='/banners/') Banners
+        li(role='statics' class=is_statics)
+          a(href='/statics/') Statics
+        li(role='deliveries' class=is_deliveries) 
+          a(href='/deliveries/') Deliveries
+      if status == 'admin'
+        ul(class='nav navbar-nav navbar-right')
+          li
+            a(href='/logout') 
+              span(class='glyphicon glyphicon-log-out')  로그아웃

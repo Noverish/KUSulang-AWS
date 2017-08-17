@@ -1,0 +1,9 @@
+{
+  "apps" : [{
+    "name"        : "kusulang-admin",
+    "script"      : "./admin_app.js",
+    "watch"       : true,
+    "ignore_watch": ["uploads", "/uploads", "nohup", "*.out", "*.log", ".git"],
+    "exec_mode"   : "cluster"
+  }]
+}

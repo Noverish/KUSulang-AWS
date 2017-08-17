@@ -5,19 +5,20 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var index = require('./routes/index');
-var admin = require('./admin/index')(app);
+// var index = require('./routes/index');
+// var admin = require('./admin/index')(app);
 
-var users = require('./routes/users');
-var store = require('./routes/store');
+// var users = require('./routes/users');
+// var store = require('./routes/store');
 
 var app = express();
 
 // view engine setup
 app.set('views', [__dirname + '/views', __dirname + '/admin/views']);
 app.set('view engine', 'ejs');
+app.set('view engine', 'pug');
 // port setup
-app.set('port', process.env.PORT || 9000);
+app.set('port', process.env.PORT || 9001);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -27,11 +28,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/admin', admin); // Administrator Page
+// app.use('/', index);
+// app.use('/admin', admin); // Administrator Page
 
-app.use('/users', users);
-app.use('/store', store);
+// app.use('/users', users);
+// app.use('/store', store);
+
+app.use('/', function(req, res, next){
+  res.render('./test.pug');
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

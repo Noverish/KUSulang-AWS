@@ -3,13 +3,122 @@ html
   include ../head.pug
   body
     - var is_deliveries = 'active';
+    - var val = results[0];
     include ../nav.pug
-    - var _id = id[0];
+    include ./list_tab.pug
+    div(class='container-fluid')
+      //- h4=id+'번 Delivery View'
     div(class='panel panel-default')
-      div(class='panel-heading')
-        a(class='btn btn-default' href='../' role='list') 리스트
-        h1= _id+'번 주문'
-        div(class='text-right')
-          a(class='btn btn-default' href='./modify/' role='modify') 배달수정
-          a(class='btn btn-default' href='./fail/' role='fail') 배달실패
-          a(class='btn btn-default' href='./complete/' role='complete') 배달완료
+      div(class='panel-delivery')
+        div(class='container')
+          label(class='col-xs-4 col-md-2') 주문ID 
+          p(class='col-xs-6 col-md-4')='KU-'+val._id
+          label(class='col-xs-4 col-md-2') 주문자이름 
+          p(class='col-xs-6 col-md-4')=val.orderer_name
+        div(class='container')
+          label(class='col-xs-4 col-md-2') 전화
+          a(href='tel://'+results[0].contact class='col-xs-8 col-md-4')=val.contact
+        div(class='container')
+          label(class='col-xs-4 col-md-2') 주소
+          a(href='http://map.naver.com/?query='+val.address1+' '+val.address2+' '+val.address3 class='col-xs-8 col-md-4')=val.address1+' '+val.address2+' '+val.address3
+        div(class='container')
+          table(class='table table-responsive')
+            tr
+              th #
+              th 장소
+              th 메뉴
+              th 특이사항
+            - var num = 1;
+            each items in val.items
+              tr
+                td=num++
+                td=items.place_name
+                td=items.menu
+                td=items.note
+        div(class='container')
+          label(class='col-xs-4 col-md-2') 결제방법
+          if val.payment == 0
+            p(class='col-xs-8 col-md-4') 현금결제 
+          if val.payment == 1
+            p(class='col-xs-8 col-md-4') 입금결제
+          label(class='col-xs-4 col-md-2') 가격
+          p(class='col-xs-8 col-md-4')=val.price+' '
+        div(class='container')
+          label(class='col-xs-4 col-md-2') 라이더정보
+          img(src=val.deliverer_img class='img col-xs-7 col-md-3')
+          p(class='col-xs-6 col-md-2') 
+        div(class='container')
+          label(class='col-xs-4 col-md-2') 주문특이사항
+          p(class='col-xs-8 col-md-10')=val.note+' '
+        div(class='container')
+          label(class='col-xs-4 col-md-2') 주문접수시간
+          p(class='col-xs-8 col-md-4')=val.request_time+' '
+          label(class='col-xs-4 col-md-2') 라이더선정시간
+          p(class='col-xs-8 col-md-4')=val.chosen_time+' '
+        div(class='container')
+          label(class='col-xs-4 col-md-2') 배달시작시간
+          p(class='col-xs-8 col-md-4')=val.start_time+' '
+          label(class='col-xs-4 col-md-2') 배달완료시간
+          p(class='col-xs-8 col-md-4')=val.complete_time+' '
+        div(class='container')
+          div(class='progress')
+            if val.delivery_status == 0
+              div(class='progress-bar' role='progressbar' aria-valuemin='0' aria-valuemax='100' style='width: 25%') 주문완료
+            if val.delivery_status == 1
+              div(class='progress-bar' role='progressbar' aria-valuemin='0' aria-valuemax='100' style='width: 50%') 라이더선정
+            if val.delivery_status == 2
+              div(class='progress-bar' role='progressbar' aria-valuemin='0' aria-valuemax='100' style='width: 60%') 라이더출발
+            if val.delivery_status == 3
+              div(class='progress-bar' role='progressbar' aria-valuemin='0' aria-valuemax='100' style='width: 75%') 음식배달중
+            if val.delivery_status == 4
+              div(class='progress-bar progress-bar-success' role='progressbar' aria-valuemin='0' aria-valuemax='100' style='width: 100%') 배달완료
+            if val.delivery_status == 5
+              div(class='progress-bar progress-bar-warning' role='progressbar' aria-valuemin='0' aria-valuemax='100' style='width: 100%') 배달취소
+            if val.delivery_status == 6
+              div(class='progress-bar progress-bar-danger' role='progressbar' aria-valuemin='0' aria-valuemax='100' style='width: 100%') 주문취소
+        div(class='container')
+          label(class='col-xs-4 col-md-2') 배달상태메세지
+          p(class='col-xs-8 col-md-10')=val.status_msg
+
+    form(class='form' action='./' method='post')
+      if val.delivery_status == 4 || val.delivery_status == 5 || val.delivery_status == 6
+        div(class='btn-group col-xs-12' role='group')
+          a(type='button' class='btn btn-default btn-delivery') 완료된 주문입니다.
+      else
+        div(class='container-fluid container-delivery-button')
+          input(type='hidden' name='delivery_status' id='deliveryStatus' value=val.delivery_status)
+          input(type='hidden' name='user_id' id='deliveryUserId' value=val.user_id)
+          a(type='button' class='btn btn-default btn-delivery' id='deliveryCancelBtn' data-toggle='modal' data-target='#cancelModal'+val._id) 배달취소
+          if val.delivery_status == 0
+            div(class='btn-group col-xs-12' role='group')
+              button(type='submit' class='btn btn-default btn-delivery' id='deliveryViewConfirmBtn' formaction='./deliverer/') 라이더선정
+          if val.delivery_status == 2
+            div(class='btn-group col-xs-12' role='group')
+              a(type='button' class='btn btn-default btn-delivery' id='deliveryViewConfirmBtn' data-toggle='modal' data-target='#startModal'+val._id) 배달시작
+          if val.delivery_status == 3
+            div(class='btn-group col-xs-12' role='group')
+              a(type='button' class='btn btn-default btn-delivery' id='deliveryViewConfirmBtn' data-toggle='modal' data-target='#completeModal'+val._id) 배달완료 
+          
+      include ./modal_start.pug
+      include ./modal_complete.pug
+      include ./modal_cancel.pug
+
+    a(type='button' href='../' id='closeBtn' class='btn btn-default')
+      span(class='glyphicon glyphicon-remove')
+    
+    input(type='hidden' id='isRefresh' value='0')
+        
+    script.
+      
+      $(document).ready(function(){
+      
+        var $isRefresh = $('#isRefresh');
+        $isRefresh.val() == '1' ? location.reload(true) : $isRefresh.val('1');
+      
+      });
+      
+      function goBack() {
+          window.history.back();
+      }
+      
+      

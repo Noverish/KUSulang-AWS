@@ -1,0 +1,182 @@
+body {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  font-size: 14px !important;
+}
+a {
+  color: #f24a3f;
+}
+label {
+
+}
+h4 {
+  color: #f24a3f;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #f24a3f;
+}
+.navbar {
+    margin-bottom: 0;
+    background-color: #f24a3f;
+    z-index: 9999;
+    border: 0;
+    font-size: 12px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    border-radius: 0;
+}
+.navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
+}
+.navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #f4511e !important;
+    background-color: #fff !important;
+}
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+}
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+  background: #FFF;
+  color: #f4511e;
+  border-bottom: 1px solid #f24a3f;
+}
+.nav-pills > li > a {
+  color: #ccc;
+  background: #FFF;
+  border-radius: 0px;
+}
+@media (min-width: 768px) {
+  .navbar-right {
+    margin-right: 0px;
+  }
+  .navbar-fixed-bottom {
+    padding-bottom: 15px;
+    background-color: #FFF;
+  }
+}
+.navbar-fixed-bottom {
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: transparent;
+}
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+  position: relative;
+  min-height: 1px;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+.btn-delivery {
+  font-size: 14px !important;
+  line-height: 1.42857143 !important;
+  letter-spacing: 4px;
+  width: 100%;
+  color: #999;
+  background: #FFF;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  border: 1px solid #999;
+  border-radius: 10px;
+}
+.btn-delivery:hover {
+  width: 100%;
+  color: #f24a3f;
+  background: #FFF;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  border: 1px solid #f24a3f;
+  border-radius: 10px;
+}
+.panel {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+.panel-delivery {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+#btnDeliverer {
+  width: 100%;
+  border: 1px solid #888;
+  color: #888;
+  padding-top: 10px;
+}
+#btnDeliverer:hover {
+  color: #FFF;
+  border: 1px solid #f24a3f;
+  background-color: #f24a3f;
+}
+.progress-bar {
+  padding: 10px;
+  font-size: 14px;
+  background-color: #f24a3f;
+}
+.progress {
+  height: 40px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.deliverer-info {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.container-delivery-button {
+  padding: 0px;
+  margin-bottom: 0px;
+}
+.modal-header {
+  color: #FFF;
+  background-color: #f24a3f;
+}
+.modal.fade .modal-dialog {
+  margin-top: 70px;
+  -webkit-transition: -webkit-transform .1s ease-out;
+       -o-transition:      -o-transform .1s ease-out;
+          transition:         transform .1s ease-out;
+}
+#deliveryCancelBtn {
+  padding-top: 9px;
+  padding-bottom: 9px;
+  width: auto;
+  color: #ffffff;
+  background-color: #f24a3f;
+  border-color: transparent;
+  display: block; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  top: 100px; /* Place the button at the bottom of the page */
+  right: -10px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  outline: 5px; /* Remove outline */
+  cursor: pointer; /* Add a mouse pointer on hover */
+}
+#deliveryCancelBtn:hover {
+  background-color: #ccc; /* Add a dark-grey background on hover */
+}
+#closeBtn {
+  color: #f24a3f;
+  background-color: transparent;
+  border-color: transparent;
+  display: block; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  top: 55px; /* Place the button at the bottom of the page */
+  right: 12px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  outline: 5px; /* Remove outline */
+  cursor: pointer; /* Add a mouse pointer on hover */
+}
+#closeBtn:hover {
+  background-color: #ccc; /* Add a dark-grey background on hover */
+}
+#deliveryViewConfirmBtn {
+  display: block; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  left: 0px;
+  bottom: 5px; /* Place the button at the bottom of the page */
+  z-index: 99; /* Make sure it does not overlap */
+  cursor: pointer; /* Add a mouse pointer on hover */
+}
+#deliveryViewConfirmBtn:hover {
+
+}

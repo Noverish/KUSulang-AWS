@@ -2,10 +2,16 @@ var express = require('express');
 var app = express();
 var request = require('request');
 var fs = require('fs');
+var nconf = require('nconf');
+var schedule = require(process.cwd()+'/background/schedule');
+
 var conn = require('../../config/mysql/db.js')();
 var FCM = require('fcm-node');
 var severKey = 'AAAARCNNKRI:APA91bGwIaaysS3M9vGv-QYnOkTqjIiyWH3Jz3fPkLisqQlMhr-d85BjEBkodCDa4cu_Ha3umqZt5ES2g-CNoznqw6SImMfZm6ft4fSEB1CDQ8fv6V5XugNZUAe5XWyO2jxg7m0A8fge';
 var fcm = new FCM(severKey);
+
+nconf.argv().env();
+nconf.file(process.cwd()+'/config/config.json');
 
 var sql_FROM_ArticleWriter = 'ArticleWriter ';
 var sql_FROM_Article = 'Article ';
@@ -22,9 +28,13 @@ var base_s3_asset = 'https://s3.ap-northeast-2.amazonaws.com/kusulang-asset/';
 
 var page_size = '20';
 
+var config_confirm_key = '0bd9f6dd716003f3818d15d2e211ee73';
 /**
 todo : img url paste, use model
 **/
+
+// var delivery_start_schedule = schedule.delivery_start_schedule((nconf.get('delivery:startTime:hour') + 24 - 9) % 24);
+// var delivery_end_schedule = schedule.delivery_end_schedule((nconf.get('delivery:endTime:hour') + 24 - 9) % 24);
 
 conn.on('error', function(err) {
   if(err) {
@@ -41,6 +51,105 @@ conn.on('error', function(err) {
   }
 });
 
+exports.config_delivery_info = function(req, res, next) {
+  nconf.file(process.cwd()+'/config/config.json');
+  // var delivery_schedule = schedule.delivery_schedule();
+  res.send(nconf.get('delivery'));
+}
+//
+// exports.config_delivery_deliverable = function(req, res, next) {
+//   var config_key = req.body.config_key;
+//   if(config_key != config_confirm_key) {
+//     var json = {}
+//     json['res'] = '0';
+//     json['msg'] = 'No Match Key';
+//     res.status(200).json(json);
+//   }
+//   var is_deliverable = req.body.is_deliverable;
+//   nconf.file(process.cwd()+'/config/config.json');
+//
+//   var startTimeUTCHour = (nconf.get('delivery:startTime:hour') + 24 - 9) % 24;
+//   var endTimeUTCHour = (nconf.get('delivery:endTime:hour') + 24 - 9) % 24;
+//
+//   if(is_deliverable == 1) {
+//     nconf.set('delivery:available', 1);
+//     delivery_start_schedule = schedule.delivery_start_schedule(startTimeUTCHour);
+//     delivery_end_schedule = schedule.delivery_end_schedule(endTimeUTCHour);
+//   } else if (is_deliverable == 0) {
+//     nconf.set('delivery:available', 0);
+//     console.log('delivery schedule cancel');
+//     delivery_start_schedule.cancel();
+//     delivery_end_schedule.cancel();
+//   }
+//   nconf.save();
+//
+//   var json = {};
+//   json = results_json(json, '1');
+//   json['delivery'] = nconf.get('delivery');
+//   res.status(200).json(json);
+// }
+//
+// /*
+// params: start_hour, end_hour
+// */
+// exports.config_delivery_schedule_modify = function(req, res, next) {
+//   var config_key = req.body.config_key;
+//   if(config_key != config_confirm_key) {
+//     var json = {}
+//     json['res'] = '0';
+//     json['msg'] = 'No Match Key';
+//     res.status(200).json(json);
+//   }
+//   var start_hour = req.body.start_hour;
+//   var end_hour = req.body.end_hour;
+//   start_hour = parseInt(start_hour);
+//   end_hour = parseInt(end_hour);
+//
+//   nconf.file(process.cwd()+'/config/config.json');
+//   nconf.set('delivery:startTime:hour', start_hour);
+//   nconf.set('delivery:endTime:hour', end_hour);
+//
+//   var currentTime = new Date();
+//   current_hour = currentTime.getUTCHours() + 9;
+//   current_hour = current_hour % 24;
+//   nconf.set('delivery:available', 0);
+//
+//   if(start_hour < end_hour) {
+//     console.log(current_hour);
+//
+//     if(start_hour <= current_hour && current_hour < end_hour) {
+//       nconf.set('delivery:available', 1);
+//     } else {
+//       nconf.set('delivery:available', 0);
+//     }
+//   } else if(start_hour > end_hour) {
+//     if(current_hour < start_hour && end_hour <= current_hour) {
+//       nconf.set('delivery:available', 0);
+//     } else {
+//       nconf.set('delivery:available', 1);
+//     }
+//   } else {
+//     nconf.set('delivery:available', 0);
+//   }
+//
+//   nconf.save();
+//
+//   delivery_start_schedule.cancel();
+//   delivery_end_schedule.cancel();
+//
+//   var startTimeUTCHour = (nconf.get('delivery:startTime:hour') + 24 - 9) % 24;
+//   var endTimeUTCHour = (nconf.get('delivery:endTime:hour') + 24 - 9) % 24;
+//
+//   delivery_start_schedule = schedule.delivery_start_schedule(startTimeUTCHour);
+//   delivery_end_schedule = schedule.delivery_end_schedule(endTimeUTCHour);
+//
+//   var json = {};
+//   json = results_json(json, '1');
+//   json['current_hour'] = current_hour;
+//   json['delivery'] = nconf.get('delivery');
+//   res.status(200).json(json);
+// }
+
 exports.store_old = function(req, res, next) {
   var id = req.params.id;
   var image = req.file;
@@ -48,7 +157,7 @@ exports.store_old = function(req, res, next) {
   fs.rename(image.destination + image.filename, image.destination + image.originalname, function(){
     var upload_request = request.post({
       headers: {'content-type' : 'multipart/form-data'},
-      url:     'http://localhost:9000/store/'+id
+      url:     'http://api.ziumcompany.net/store/'+id
       }, function(error, response, body){
       console.log(error);
       var json = JSON.parse(body);
@@ -95,8 +204,8 @@ exports.article_list = function(req, res, next) {
 
   var sql =
   'SELECT ar.writer_id, ar._id AS article_id, ar.img, ar.title, '
-  + '(SELECT count(*) FROM ArticleLike AS al WHERE al.article_id = ar._id) as like_num, '
-  + '(SELECT count(*) FROM ArticleComment AS ac WHERE ac.article_id = ar._id) as comment_num, '
+  + '(SELECT count(*) FROM ArticleLike AS al WHERE al.article_id = article_id) as like_num, '
+  + '(SELECT count(*) FROM ArticleComment AS ac WHERE ac.article_id = article_id) as comment_num, '
   + 'date_format(ar.date, \'%Y-%m-%d %H:%i:%s\') AS date '
   + 'FROM '+sql_FROM_Article+' AS ar '
   + 'ORDER BY article_id DESC '
@@ -126,7 +235,7 @@ exports.article_info = function(req, res, next) {
   var user_token = req.query.user_token;
 
   var sql =
-  'SELECT ar.img, ar.title, ar.url, '
+  'SELECT ar._id, ar.img, ar.title, ar.url, '
   + '(SELECT count(*) FROM ArticleLike AS al WHERE al.article_id = ar._id) as like_num, '
   + '(SELECT count(*) FROM ArticleComment AS ac WHERE ac.article_id = ar._id) as comment_num, '
   + 'date_format(ar.date, \'%Y-%m-%d %H:%i:%s\') AS date, '
@@ -209,7 +318,6 @@ exports.article_comment_modify = function(req, res, next) {
       res.status(200).json(json);
     } else {
       json = results_json(json, '1');
-      console.log(results);
       // json['comment_id'] = results.insertId;
       res.status(200).json(json);
     }
@@ -237,7 +345,6 @@ exports.article_comment_delete = function(req, res, next) {
       res.status(200).json(json);
     } else {
       json = results_json(json, '1');
-      console.log(results);
       res.status(200).json(json);
     }
   });
@@ -303,7 +410,9 @@ exports.article_comment_write = function(req, res, next) {
 exports.banner_home = function(req, res, next) {
   var sql =
   'SELECT _id AS banner_id, CONCAT(? ,img) AS img, behave, data, data2 '
-  + 'FROM ' + sql_FROM_BannerHome + ' WHERE enable = 1'
+  + 'FROM ' + sql_FROM_BannerHome
+  + 'WHERE enable = 1 '
+  + 'ORDER BY rand() '
   conn.query(sql, [base_s3_asset+'banners/'], function(err, results, fields) {
     var json = {};
     if(err) {
@@ -319,9 +428,12 @@ exports.banner_home = function(req, res, next) {
 }
 
 exports.banner_article = function(req, res, next) {
+
   var sql =
   'SELECT _id AS banner_id, CONCAT(? ,img) AS img, behave, data, data2 '
-  + 'FROM ' + sql_FROM_BannerArticle + ' WHERE enable = 1'
+  + 'FROM ' + sql_FROM_BannerArticle
+  + 'WHERE enable = 1 '
+
   conn.query(sql, [base_s3_asset+'banners/'], function(err, results, fields) {
     var json = {};
     if(err) {
@@ -337,9 +449,13 @@ exports.banner_article = function(req, res, next) {
 }
 
 exports.banner_search = function(req, res, next) {
+
   var sql =
   'SELECT _id AS banner_id, CONCAT(? ,img) AS img, behave, data, data2 '
-  + 'FROM ' + sql_FROM_BannerSearch + ' WHERE enable = 1'
+  + 'FROM ' + sql_FROM_BannerSearch
+  + 'WHERE enable = 1 '
+  + 'ORDER BY rand() '
+
   conn.query(sql, [base_s3_asset+'banners/'], function(err, results, fields) {
     var json = {};
     if(err) {
@@ -356,16 +472,15 @@ exports.banner_search = function(req, res, next) {
 
 exports.delivery_deliverable_store = function(req, res, next) {
   var sql =
-  'SELECT pl._id as place_id, st.name as place_name '
+  'SELECT pl._id as place_id, pl.name as place_name '
   + 'FROM Place AS pl '
-  + 'JOIN ((SELECT _id, name FROM Truck) UNION (SELECT _id, name FROM Store) UNION (SELECT _id, name FROM Place)) AS st '
-  + 'ON st._id = pl._id '
   + 'WHERE pl.is_deliverable = 1 '
+  + 'ORDER BY name DESC '
 
   conn.query(sql, function(err, results, fields) {
     var json = {};
     if(err) {
-      console.log('writer_list select err : '+err);
+      console.log('delivery_deliverable_store select err : '+err);
       json = results_json(json, '0', err);
       res.status(200).json(json);
     } else {
@@ -383,6 +498,8 @@ data(array): name
 exports.delivery_deliverable_address = function(req, res, next) {
   var is_school = req.query.is_school;
   var is_street = req.query.is_street;
+  var is_android = req.query.is_android;
+  var app_version = req.query.app_version;
 
   var sql =
   'SELECT name '
@@ -404,6 +521,28 @@ exports.delivery_deliverable_address = function(req, res, next) {
       json = results_json(json, '0', err);
       res.status(200).json(json);
     } else {
+      if(is_android == '0' && (app_version == '2.0.0' || app_version == '2.0.1')) {
+        console.log(is_android);
+        console.log(app_version);
+        for (val in results) {
+          results[val].name = results[val].name.replace(/  /g, ' ');
+          results[val].name = results[val].name.replace(/ /g, ' ');
+          var splitname = results[val].name.split(' ');
+          var resname = results[val].name.replace(splitname[0], '');
+          resname = resname.replace(/ /g, '');
+          results[val].name = splitname[0] + ' ' + resname;
+
+          // var resname;
+          // for (var i = 1; i < splitname.length; i++) {
+          //   resname = resname + splitname[i];
+          // }
+          // resname = splitname[0] + resname;
+
+        }
+
+      }
+
+
       json = results_json(json, '1');
       json['data'] = results;
       res.status(200).json(json);
@@ -411,28 +550,15 @@ exports.delivery_deliverable_address = function(req, res, next) {
   });
 }
 
-//not complete
 exports.delivery_deliverable_time = function(req, res, next) {
 
-  // var sql =
-  // 'SELECT name '
-  //
-  // conn.query(sql, [], function(err, results, fields) {
-  //   var json = {};
-  //   if(err) {
-  //     console.log('delivery_deliverable_time select err : '+err);
-  //     json = results_json(json, '0', err);
-  //     res.status(200).json(json);
-  //   } else {
-  //     json = results_json(json, '1');
-  //     json['is_deliverable'] = 1;
-  //     res.status(200).json(json);
-  //   }
-  // });
+  nconf.file(process.cwd()+'/config/config.json');
+  var is_deliverable = nconf.get('delivery:available');
   var json = {};
   json = results_json(json, '1');
-  json['is_deliverable'] = 0;
+  json['is_deliverable'] = is_deliverable;
   res.status(200).json(json);
+
 }
 
 /*
@@ -452,6 +578,7 @@ exports.delivery_list = function(req, res, next) {
   'SELECT de._id, de.orderer_name, date_format(de.request_time, \'%Y-%m-%d %H:%i:%s\') AS request_time, de.note, de.status '
   + 'FROM Delivery AS de '
   + 'WHERE de.user_id = ? '
+  + 'ORDER BY request_time DESC '
   + 'LIMIT ?, ?'
 
   conn.query(sql, [user_token, parseInt(page_offset), parseInt(page_size)], function(err, results, fields) {
@@ -515,7 +642,9 @@ items{delivery_id, place_id, menu, note}
 */
 exports.delivery_request = function(req, res, next) {
 
-  var admin_token = 'dlLo5zHF7RI:APA91bHM2t4MoTogodFl6c_ubSbUqBCu0XrOZalQv4qXcVdjHpICAyzMh805S2YiS4-I3g7wfn85wAkzEo3VnH_GZh2sMiUeoApvAlvcP8Ii5ooAZ1KEc4mb2ssCRggBu-nMxsG0KHG6';
+  nconf.file(process.cwd()+'/config/config.json');
+
+  var admin_token = nconf.get('delivery:admin_token');
 
   var user_token = req.body.user_token;
   var is_android = req.body.is_android;
@@ -555,8 +684,6 @@ exports.delivery_request = function(req, res, next) {
           json = results_json(json, '0', ins_err);
           res.status(200).json(json);
         } else {
-          json['delivery_id'] = ins_results.insertId;
-
           var json_items = JSON.parse(items);
           for (var key in json_items) {
             if(!json_items[key]['note']) {
@@ -603,16 +730,18 @@ exports.delivery_request = function(req, res, next) {
                         json = results_json(json, '0', di_con_err);
                         res.status(200).json(json);
                       } else {
-                        console.log(di_con_res);
                         var content = address1+' '+address2+' '+address3+'/ ';
                         for(key in di_con_res) {
                           content = content + di_con_res[key]['place_name'] + ' ';
                         }
-                        send_fcm(is_android,
-                        con_res[0]._id+'/ '+'접수완료'+'/ '+con_res[0].request_time,
-                        content,
-                        admin_token);
+                        sendAdminPush(admin_token, function(token){
+                          send_fcm(1,
+                          con_res[0]._id+'/ '+'접수완료'+'/ '+con_res[0].request_time,
+                          content,
+                          token);
+                        });
                         json = results_json(json, '1');
+                        json['delivery_id'] = ins_results.insertId;
                         res.status(200).json(json);
                       }
 
@@ -645,7 +774,8 @@ exports.delivery_info = function(req, res, next) {
 
   var sql =
   'SELECT de._id, de.orderer_name, date_format(de.request_time, \'%Y-%m-%d %H:%i:%s\') AS request_time, '
-  + 'de.contact, de.is_school, de.address1, de.address2, de.address3, de.payment, de.note, de.status, dr.img AS deliverer_img '
+  + 'de.contact, de.is_school, de.address1, de.address2, de.address3, de.payment, de.note, de.status, '
+  + 'IFNULL(dr.img, \'https://s3.ap-northeast-2.amazonaws.com/kusulang-asset/deliverer/empty_rider.png\') AS deliverer_img '
   + 'FROM Delivery AS de '
   + 'LEFT OUTER JOIN Deliverer AS dr '
   + 'ON de.deliverer_id = dr._id '
@@ -659,7 +789,6 @@ exports.delivery_info = function(req, res, next) {
       res.status(200).json(json);
     } else {
 
-      console.log(results[0]);
       results[0]['items'] = [];
 
       var sql =
@@ -676,7 +805,6 @@ exports.delivery_info = function(req, res, next) {
           json = results_json(json, '0', items_err);
           res.status(200).json(json);
         } else {
-          console.log(items_res);
           for (key in items_res) {
             results[0]['items'].push(items_res[key]);
           }
@@ -694,15 +822,9 @@ exports.delivery_info = function(req, res, next) {
 
 }
 
-// not complete deliveryitem 추가해야 함
-/*
-params : delivery_id user_token
-orderer_name contact	is_school	address1	address2	address3	payment	note status
-items{delivery_id, place_id, menu, note}
-*/
 exports.delivery_modify = function(req, res, next) {
 
-  var admin_token = 'dlLo5zHF7RI:APA91bHM2t4MoTogodFl6c_ubSbUqBCu0XrOZalQv4qXcVdjHpICAyzMh805S2YiS4-I3g7wfn85wAkzEo3VnH_GZh2sMiUeoApvAlvcP8Ii5ooAZ1KEc4mb2ssCRggBu-nMxsG0KHG6';
+  var admin_token = nconf.get('delivery:admin_token');
 
   var delivery_id = req.params.id;
   var user_token = req.body.user_token;
@@ -723,7 +845,7 @@ exports.delivery_modify = function(req, res, next) {
   var status_string;
   switch (_status) {
     case '6':
-      status_string = '배달취소'
+      status_string = '주문취소'
       break;
     default:
       status_string = '주문변경'
@@ -799,15 +921,16 @@ exports.delivery_modify = function(req, res, next) {
                         json = results_json(json, '0', di_con_err);
                         res.status(200).json(json);
                       } else {
-                        console.log(di_con_res);
                         var content = _address1+' '+_address2+' '+_address3+'/ ';
                         for(key in di_con_res) {
                           content = content + di_con_res[key]['place_name'] + ' ';
                         }
-                        send_fcm(is_android,
-                        con_res[0]._id+'/ '+status_string+'/ '+con_res[0].request_time,
-                        content,
-                        admin_token);
+                        sendAdminPush(admin_token, function(token){
+                          send_fcm(is_android,
+                          con_res[0]._id+'/ '+status_string+'/ '+con_res[0].request_time,
+                          content,
+                          token);
+                        });
                         json = results_json(json, '1');
                         res.status(200).json(json);
                       }
@@ -827,11 +950,60 @@ exports.delivery_modify = function(req, res, next) {
 
 }
 
+// 메뉴 태그 인서트
+exports.store_menu_tag_insert = function(req, res, next) {
+
+  var menu_tag = req.body.menu_tag;
+  var menu_tag_img = req.body.menu_tag_img;
+
+  var sql =
+  'INSERT INTO MenuTag (menu_tag, menu_tag_img) '
+  + 'VALUES (?, ?) '
+
+  conn.query(sql, [menu_tag, menu_tag_img], function(err, results, fields) {
+    var json = {};
+    if(err) {
+      console.log('store_menu_tag_insert insert err : '+err);
+      json = results_json(json, '0', err);
+      res.status(200).json(json);
+    } else {
+      json = results_json(json, '1');
+      json['inserttId'] = results.insertId;
+      res.status(200).json(json);
+    }
+  });
+
+}
+
+// 상점 키워드 삽입
+exports.store_keyword_insert = function(req, res, next) {
+
+  var keyword = req.body.keyword;
+  var store_id = req.body.store_id;
+
+  var sql =
+  'INSERT INTO StoreKeyword (keyword, store_id) '
+  + 'VALUES (?, ?) '
+
+  conn.query(sql, [keyword, store_id], function(err, results, fields) {
+    var json = {};
+    if(err) {
+      console.log('store_keyword_insert insert err : '+err);
+      json = results_json(json, '0', err);
+      res.status(200).json(json);
+    } else {
+      json = results_json(json, '1');
+      json['inserttId'] = results.insertId;
+      res.status(200).json(json);
+    }
+  });
+
+}
+
 /*
 params: sort	page	random_key
 data(array): menu_tag	menu_tag_img
 */
-
 exports.store_menu_tag_list = function(req, res, next) {
 
   var sort = req.query.sort;
@@ -866,7 +1038,7 @@ exports.store_menu_tag_list = function(req, res, next) {
       json = results_json(json, '0', err);
       res.status(200).json(json);
     } else {
-      console.log(results);
+      // console.log(results);
       json = results_json(json, '1');
       json['data'] = results;
       res.status(200).json(json);
@@ -903,7 +1075,6 @@ exports.store_search_keyword_name = function(req, res, next) {
       json = results_json(json, '0', err);
       res.status(200).json(json);
     } else {
-      console.log(results);
       json = results_json(json, '1');
       json['data'] = results;
       res.status(200).json(json);
@@ -943,7 +1114,6 @@ exports.store_search_keyword_popular = function(req, res, next) {
       json = results_json(json, '0', err);
       res.status(200).json(json);
     } else {
-      console.log(results);
       json = results_json(json, '1');
       json['data'] = results;
       res.status(200).json(json);
@@ -981,7 +1151,6 @@ exports.store_search_keyword_random = function(req, res, next) {
       json = results_json(json, '0', err);
       res.status(200).json(json);
     } else {
-      console.log(results);
       json = results_json(json, '1');
       json['data'] = results;
       res.status(200).json(json);
@@ -991,9 +1160,7 @@ exports.store_search_keyword_random = function(req, res, next) {
 
 //not complete
 exports.store_review_image_upload = function(req, res, next) {
-    var json = {'hello': 'world'}
 
-    res.status(200).json(json);
 }
 
 exports.writer_article_list = function(req, res, next) {
@@ -1001,10 +1168,11 @@ exports.writer_article_list = function(req, res, next) {
   var page_offset = page_size * (page - 1);
   var id = req.params.id;
   var sql =
-  'SELECT ar._id AS article_id, ar.img, ar.title, count(al._id) as like_num, count(ac._id) as comment_num, date_format(ar.date, \'%Y-%m-%d %H:%i:%s\') AS date '
+  'SELECT ar._id AS article_id, ar.img, ar.title, '
+  + '(SELECT count(*) FROM ArticleLike AS al WHERE al.article_id = ar._id) as like_num, '
+  + '(SELECT count(*) FROM ArticleComment AS ac WHERE ac.article_id = ar._id) as comment_num, '
+  + 'date_format(ar.date, \'%Y-%m-%d %H:%i:%s\') AS date '
   + 'FROM ' + sql_FROM_Article + 'AS ar '
-  + 'LEFT OUTER JOIN ArticleLike AS al ON ar._id = al.article_id '
-  + 'LEFT OUTER JOIN ArticleComment AS ac ON ar._id = ac.article_id '
   + 'WHERE ar.writer_id = ?'
   + 'GROUP BY ar._id '
   + 'HAVING count(ar._id) '
@@ -1018,7 +1186,6 @@ exports.writer_article_list = function(req, res, next) {
       json = results_json(json, '0', err);
       res.status(200).json(json);
     } else {
-      console.log(results);
       json = results_json(json, '1');
       json['data'] = results;
       res.status(200).json(json);
@@ -1058,7 +1225,8 @@ exports.writer_list = function(req, res, next) {
   var page_offset = page_size * (page - 1);
 
   var sql =
-  'SELECT _id AS writer_id, profile_main, user_id, profile_img, name, detail, like_total '
+  'SELECT aw._id AS writer_id, art._id, profile_main, user_id, profile_img, name, like_total, '
+  + 'IFNULL(aw.explain, aw.detail) AS detail '
   + 'FROM ' + sql_FROM_ArticleWriter + 'AS aw '
   + 'JOIN (SELECT ar.writer_id, count(*) as like_total '
   	     + 'FROM Article AS ar '
@@ -1066,7 +1234,11 @@ exports.writer_list = function(req, res, next) {
   	     + 'GROUP BY ar.writer_id '
   	     + 'HAVING count(writer_id)) AS at '
   + 'ON at.writer_id = aw._id '
-  + 'ORDER BY priority DESC, _id DESC '
+  + 'JOIN (SELECT * FROM Article ORDER BY _id DESC) AS art '
+  + 'ON art.writer_id = aw._id '
+  + 'WHERE aw.enable = 1 '
+  + 'GROUP BY aw._id '
+  + 'ORDER BY art._id DESC '
   + 'LIMIT ?, ?'
 
   conn.query(sql, [parseInt(page_offset), parseInt(page_size)], function(err, results, fields) {
@@ -1125,4 +1297,22 @@ function results_json(json, successful, err) {
     json['msg'] = '';
     return json;
   }
+}
+
+function sendAdminPush(admin_user_id, callback) {
+  var sql =
+  'SELECT us.token AS token, hl.is_android AS is_android FROM User AS us '
+  + 'LEFT JOIN HistoryLoginNew AS hl ON us._id = hl.user_id '
+  + 'WHERE us._id = ?'
+  conn.query(sql, [admin_user_id], function(err_token, results_token, fie_token){
+    if(err_token) {
+      console.log('token select err : '+err_token);
+      res.send('token select err : '+err_token);
+    } else {
+      var token = results_token[0].token;
+      console.log('getadmintoken - '+token);
+      callback(token);
+
+    }
+  })
 }
