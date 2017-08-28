@@ -6,7 +6,7 @@ module.exports = function(){
   var mysql = require('mysql');
 
   var db_config = {
-    host     : 'db.ziumcompany.net',
+    host     : 'kusulang.clqnfykyz4cm.ap-northeast-2.rds.amazonaws.com',
     user     : 'ziumofficial',
     password : 'zntbffod1!',
     database : 'dbziumofficial'
@@ -16,7 +16,7 @@ module.exports = function(){
 
   var pool = mysql.createPool({
     connecttionLimit : 10,
-    host     : 'db.ziumcompany.net',
+    host     : 'kusulang.clqnfykyz4cm.ap-northeast-2.rds.amazonaws.com',
     user     : 'ziumofficial',
     password : 'zntbffod1!',
     database : 'dbziumofficial'

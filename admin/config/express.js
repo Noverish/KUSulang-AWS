@@ -27,7 +27,7 @@ module.exports = function() {
     resave: false,
     saveUninitialized: true,
     store:new MySQLStore({
-      host:'db.ziumcompany.net',
+      host:'kusulang.clqnfykyz4cm.ap-northeast-2.rds.amazonaws.com',
       user:'ziumofficial',
       password:'zntbffod1!',
       database:'dbziumofficial'
